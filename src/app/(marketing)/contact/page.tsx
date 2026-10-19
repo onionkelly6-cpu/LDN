@@ -1,22 +1,24 @@
-﻿import Image from "next/image";
-import { Clock, Mail } from "lucide-react";
+import Image from "next/image";
+import { Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import { practiceAreas } from "@/lib/content/practice-areas";
 import { offices } from "@/lib/content/offices";
-import { SITE_CONTACT_EMAIL } from "@/lib/site-config";
 import { submitLeadAction } from "./actions";
 
 export const metadata = {
-  title: "Contact",
+  title: "Make an Enquiry",
   description:
-    "Contact Dwight Davis & Associates to schedule a consultation. Two offices, direct attorney access, and a response within one business day.",
+    "Enquiry form for Crestbridge, a fictional private client firm on this sample website. Submissions appear in the demo firm workspace.",
 };
 
 type Props = {
   searchParams: Promise<{ error?: string; success?: string }>;
 };
+
+const inputClassName =
+  "mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent";
 
 export default async function ContactPage({ searchParams }: Props) {
   const params = await searchParams;
@@ -25,13 +27,13 @@ export default async function ContactPage({ searchParams }: Props) {
     <div className="mx-auto max-w-6xl px-6 py-20">
       <Reveal>
         <p className="font-mono text-xs uppercase tracking-widest text-accent">
-          Let&apos;s Talk
+          Get in Touch
         </p>
-        <h1 className="mt-4 font-display text-4xl sm:text-5xl">Contact Us</h1>
+        <h1 className="mt-4 font-display text-4xl sm:text-5xl">Make an Enquiry</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-          Tell us about your matter and our intake team will follow up. This
-          form does not open a case directly. Every submission is reviewed
-          by a person first.
+          Tell us a little about what you need, whether that is a new will,
+          help with an estate or planning for later life. Every enquiry is
+          reviewed by a person before a matter is opened.
         </p>
       </Reveal>
 
@@ -43,7 +45,7 @@ export default async function ContactPage({ searchParams }: Props) {
                 role="status"
                 className="mb-6 rounded-sm border border-success/40 bg-success/10 px-4 py-3 text-sm text-success"
               >
-                Thanks — your message is in. Our intake team will follow up within one business day.
+                Thank you. Your enquiry has been received and will appear in the firm workspace for review.
               </p>
             )}
             {params.error && (
@@ -54,53 +56,36 @@ export default async function ContactPage({ searchParams }: Props) {
                 {params.error}
               </p>
             )}
+            <p className="mb-6 rounded-sm border border-warning/40 bg-warning/10 px-4 py-3 text-sm text-foreground">
+              This is a sample website for a fictional firm. Please do not
+              enter real personal or financial details.
+            </p>
             <form action={submitLeadAction} className="space-y-6" aria-describedby="intake-form-note">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium">
                   Full name
                 </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent"
-                />
+                <input id="name" name="name" type="text" required className={inputClassName} />
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium">
-                    Email
+                    Your email
                   </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent"
-                  />
+                  <input id="email" name="email" type="email" required className={inputClassName} />
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium">
-                    Phone
+                    Your phone (optional)
                   </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent"
-                  />
+                  <input id="phone" name="phone" type="tel" className={inputClassName} />
                 </div>
               </div>
               <div>
                 <label htmlFor="practiceArea" className="block text-sm font-medium">
-                  Practice area
+                  How can we help?
                 </label>
-                <select
-                  id="practiceArea"
-                  name="practiceArea"
-                  className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent"
-                >
+                <select id="practiceArea" name="practiceArea" className={inputClassName}>
                   {practiceAreas.map((area) => (
                     <option key={area.slug} value={area.slug}>
                       {area.name}
@@ -110,22 +95,16 @@ export default async function ContactPage({ searchParams }: Props) {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium">
-                  What&apos;s going on?
+                  Tell us a little more
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5 text-foreground transition-colors focus-visible:outline-none focus-visible:border-accent"
-                />
+                <textarea id="message" name="message" rows={5} required className={inputClassName} />
               </div>
               <Button type="submit" variant="primary" className="rounded-none">
-                Submit Inquiry
+                Send Enquiry
               </Button>
               <p id="intake-form-note" className="text-xs text-muted-foreground">
-                This creates a Lead record our intake team reviews. Email
-                notifications land in Milestone 8.
+                Your enquiry creates a lead in the firm workspace, where staff
+                can review it and open a matter.
               </p>
             </form>
           </Card>
@@ -135,7 +114,7 @@ export default async function ContactPage({ searchParams }: Props) {
           <div className="flex h-full flex-col overflow-hidden border border-border">
             <div className="relative h-48 w-full">
               <Image
-                src="https://images.unsplash.com/photo-1521791055366-0d553872125f"
+                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad"
                 alt=""
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -143,23 +122,24 @@ export default async function ContactPage({ searchParams }: Props) {
               />
             </div>
             <div className="flex-1 bg-card p-8">
-              <h2 className="font-display text-lg">Prefer to reach out directly?</h2>
+              <h2 className="font-display text-lg">What happens next</h2>
               <ul className="mt-5 space-y-4 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2.5">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
-                  <span className="font-mono">{SITE_CONTACT_EMAIL}</span>
-                </li>
-                <li className="flex items-start gap-2.5">
                   <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
-                  We typically respond within one business day.
+                  A member of the team reviews your enquiry and, if the firm
+                  can help, opens a matter and sets up your portal access.
                 </li>
               </ul>
 
               <div className="mt-6 space-y-4 border-t border-border pt-6">
                 {offices.map((office) => (
-                  <div key={office.name} className="text-sm">
-                    <p className="font-medium text-foreground">{office.name}</p>
-                    <p className="mt-1 text-muted-foreground">{office.address}</p>
+                  <div key={office.name} className="flex items-start gap-2.5 text-sm">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
+                    <div>
+                      <p className="font-medium text-foreground">{office.name}</p>
+                      <p className="mt-1 text-muted-foreground">{office.address}</p>
+                      <p className="text-xs text-muted-foreground">{office.hours}</p>
+                    </div>
                   </div>
                 ))}
               </div>

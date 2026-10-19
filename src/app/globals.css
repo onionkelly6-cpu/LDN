@@ -12,18 +12,18 @@
      (e.g. a root-level not-found page) still renders sensibly. */
   --background: #f5f2ea;
   --card: #ffffff;
-  --foreground: #10233d;
+  --foreground: #16362c;
   --muted: #ece7db;
   --muted-foreground: #6b6255;
   --border: #ddd6c5;
-  --primary: #10233d;
+  --primary: #16362c;
   --primary-foreground: #f5f2ea;
   --accent: #b8863b;
   --accent-foreground: #241a0a;
   --success: #3f7d4a;
   --warning: #a16824;
   --destructive: #a13d33;
-  --ring: #10233d;
+  --ring: #16362c;
 }
 
 /*
@@ -37,11 +37,11 @@
 .theme-marketing {
   --background: #f5f2ea;
   --card: #ffffff;
-  --foreground: #10233d;
+  --foreground: #16362c;
   --muted: #ece7db;
   --muted-foreground: #6b6255;
   --border: #ddd6c5;
-  --primary: #10233d;
+  --primary: #16362c;
   --primary-foreground: #f5f2ea;
   --accent: #b8863b;
   --accent-foreground: #241a0a;
@@ -49,7 +49,7 @@
   --success: #3f7d4a;
   --warning: #a16824;
   --destructive: #a13d33;
-  --ring: #10233d;
+  --ring: #16362c;
   --hero-from: #f3efe3;
   --hero-to: #e6ded1;
   --shadow-card: 0 1px 2px rgba(26, 22, 17, 0.07), 0 16px 32px -20px rgba(26, 22, 17, 0.35);
@@ -58,11 +58,11 @@
 .theme-portal {
   --background: #f5f2ea;
   --card: #ffffff;
-  --foreground: #10233d;
+  --foreground: #16362c;
   --muted: #ece7db;
   --muted-foreground: #6b6255;
   --border: #ddd6c5;
-  --primary: #10233d;
+  --primary: #16362c;
   --primary-foreground: #f5f2ea;
   --accent: #b8863b;
   --accent-foreground: #241a0a;
@@ -70,7 +70,7 @@
   --success: #3f7d4a;
   --warning: #a16824;
   --destructive: #a13d33;
-  --ring: #10233d;
+  --ring: #16362c;
   --hero-from: #f3efe3;
   --hero-to: #e6ded1;
   --shadow-card: 0 1px 2px rgba(26, 22, 17, 0.07), 0 16px 32px -20px rgba(26, 22, 17, 0.35);

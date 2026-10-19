@@ -1,4 +1,4 @@
-# How Dwight Davis & Associates Works
+# How Crestbridge Private Client Solicitors Works
 
 This document explains what this application is, how its pieces fit
 together, and where to look in the code for each part. It's meant for
@@ -88,10 +88,10 @@ are assigned to the thing they're asking for.
 
 **Demo accounts** (see `src/lib/demo-accounts.ts` and the login page)
 let you sign in as each role without creating an account:
-`client@demo.dwightdavislaw.example`,
-`attorney@demo.dwightdavislaw.example`,
-`staff@demo.dwightdavislaw.example`,
-`admin@demo.dwightdavislaw.example` — passwords are on the login
+`client@demo.crestbridge.example`,
+`attorney@demo.crestbridge.example`,
+`staff@demo.crestbridge.example`,
+`admin@demo.crestbridge.example` — passwords are on the login
 page.
 
 ## About the data: "demo" storage, not a real database yet

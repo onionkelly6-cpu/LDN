@@ -46,9 +46,9 @@ export function CreateAttorneyAccountForm() {
 
   return (
     <Card>
-      <h2 className="font-display text-xl">Invite an Attorney</h2>
+      <h2 className="font-display text-xl">Invite a Solicitor</h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Set up firm workspace access for another attorney: full access to
+        Set up firm workspace access for another solicitor: full access to
         matters, documents, and self-assignment, same as your own account.
       </p>
       <form onSubmit={handleSubmit} className="mt-5 grid gap-4 sm:grid-cols-3">

@@ -10,14 +10,14 @@ const staticRoutes: Array<{
 }> = [
   { path: "/", changeFrequency: "monthly", priority: 1 },
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/attorneys", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/solicitors", changeFrequency: "monthly", priority: 0.7 },
   { path: "/case-results", changeFrequency: "weekly", priority: 0.8 },
   { path: "/locations", changeFrequency: "yearly", priority: 0.6 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.5 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.2 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.2 },
-  { path: "/attorney-advertising", changeFrequency: "yearly", priority: 0.2 },
+  { path: "/regulatory-information", changeFrequency: "yearly", priority: 0.2 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     ...attorneys.map((attorney) => ({
-      url: `${SITE_URL}/attorneys/${attorney.slug}`,
+      url: `${SITE_URL}/solicitors/${attorney.slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.6,

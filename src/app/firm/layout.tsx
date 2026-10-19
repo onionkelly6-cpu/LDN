@@ -4,7 +4,7 @@ import { WorkspaceHeader } from "@/components/portal/workspace-header";
 const allNavLinks = [
   { href: "/firm/matters", label: "Matters", attorneyOnly: true },
   { href: "/firm/clients", label: "Clients", attorneyOnly: true },
-  { href: "/firm/attorneys", label: "Attorneys", attorneyOnly: true },
+  { href: "/firm/attorneys", label: "Solicitors", attorneyOnly: true },
   { href: "/firm/leads", label: "Leads", attorneyOnly: false },
   { href: "/firm/admin", label: "Admin", attorneyOnly: false },
 ];

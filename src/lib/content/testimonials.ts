@@ -1,20 +1,19 @@
-// Placeholder demo content. Real client testimonials must be reviewed
-// against each jurisdiction's attorney advertising rules (many require
-// disclaimers or prohibit them outright) before this goes live.
+// FICTIONAL testimonials for a sample website. They are not from real
+// clients and are labelled as illustrative wherever they are shown.
 export const testimonials = [
   {
     quote:
-      "I never once felt like a case number. Every time something changed, I heard about it from the portal before I even had to ask.",
-    context: "Family Law client",
+      "After Dad died we had no idea where to start. Every step of the probate showed up in the portal before we had to ask.",
+    context: "Illustrative probate client",
   },
   {
     quote:
-      "They walked us through the entire sale of the business in plain language. No surprises at closing.",
-    context: "Business & Corporate client",
+      "They explained our wills in plain English and made sure the children from both our first marriages were looked after.",
+    context: "Illustrative wills client",
   },
   {
     quote:
-      "After the accident I didn't know where to start. They handled the insurance company so I could focus on getting better.",
-    context: "Personal Injury client",
+      "Getting the deputyship sorted meant we could finally pay Mum's care home fees without worrying.",
+    context: "Illustrative Court of Protection client",
   },
 ] as const;

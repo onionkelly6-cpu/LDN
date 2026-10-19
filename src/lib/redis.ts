@@ -22,7 +22,7 @@ const client = new Redis({ url: redisUrl, token: redisToken });
 // other's records. Prefixing every key here keeps this app's data fully
 // apportioned within the shared instance without needing a second database
 // or touching the other project at all.
-const KEY_PREFIX = "dwightdavislaw:";
+const KEY_PREFIX = "crestbridge:";
 
 function withPrefix(key: string): string {
 	return key.startsWith(KEY_PREFIX) ? key : `${KEY_PREFIX}${key}`;

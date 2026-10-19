@@ -21,7 +21,7 @@ export default async function SignupPage({ searchParams }: Props) {
         <h1 className="mt-6 font-display text-2xl">Create Your Client Account</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Set up your own client portal access. No invitation needed. If
-          your email matches a matter Dwight Davis & Associates already has on
+          your email matches a matter Crestbridge already has on
           file for you, it appears on your dashboard right away.
         </p>
         {params.error && (

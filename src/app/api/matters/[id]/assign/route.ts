@@ -25,7 +25,7 @@ export async function POST(request: NextRequest, { params }: Props) {
 
   if (matter.attorney !== null) {
     return NextResponse.json(
-      { error: "This matter is already assigned to an attorney" },
+      { error: "This matter is already assigned to a solicitor" },
       { status: 409 }
     );
   }

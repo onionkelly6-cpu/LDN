@@ -94,7 +94,7 @@ export function LeadActions({
             Convert to Matter
           </Button>
         ) : (
-          <span className="text-xs text-muted-foreground">Attorney can convert</span>
+          <span className="text-xs text-muted-foreground">Solicitor can convert</span>
         )}
       </div>
       {error && <p className="text-xs text-destructive">{error}</p>}

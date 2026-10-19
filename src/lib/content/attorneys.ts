@@ -1,56 +1,53 @@
-// Placeholder demo content — swap for real attorney bios when available.
-// Mirrors the eventual `Attorney` table (M2).
+// FICTIONAL people for a sample website. None of these solicitors exist, so
+// no profile uses a photograph — portraits fall back to initials. Keep it
+// that way: never attach a real person's photo to an invented profile.
+// (The `attorneys` export name is kept because the portal/API code shares
+// the "attorney" role name internally.)
 export const attorneys = [
   {
-    slug: "dwight-davis",
-    name: "Dwight Davis",
-    title: "Founding Partner",
-    image: "/images/attorneys/dwight-davis.jpg" as string | undefined,
-    practiceAreas: ["business-corporate", "employment-law"],
-    bio: "Dwight founded the firm on the idea that business owners deserve a lawyer who understands the deal, not just the document.",
+    slug: "eleanor-hartwell",
+    name: "Eleanor Hartwell",
+    title: "Senior Partner, Head of Private Client",
+    image: undefined as string | undefined,
+    practiceAreas: ["wills-succession", "trusts", "inheritance-tax"],
+    bio: "Eleanor leads the private client team, advising families on wills, trusts and passing wealth between generations.",
     longBio:
-      "Dwight has spent over two decades advising founders and employers on formation, contracts, financing, and workplace policy, helping clients avoid disputes before they start and resolve them efficiently when they can't.",
-    education: [
-      { school: "Northwestern University Pritzker School of Law", degree: "JD", year: "1999" },
-      { school: "University of Illinois Urbana-Champaign", degree: "B.A., Economics", year: "1996" },
-    ],
-    barAdmissions: ["Illinois"],
+      "Eleanor's work centres on succession planning for families with property, business interests and assets in more than one country. She is known for turning complicated family circumstances into a plan that everyone can understand, and for staying involved when that plan needs to be put into effect.",
+    qualifications: ["Fictional profile created for this sample website"],
     notableMatters: [
-      "Advised a founding team through a Series A financing",
-      "Negotiated the sale of a regional logistics company to a national acquirer",
+      "Structured a three-generation succession plan around a family-owned farm",
+      "Restructured a discretionary trust to reflect a blended family's wishes",
     ],
   },
   {
-    slug: "renee-castellano",
-    name: "Renee Castellano",
-    title: "Founding Partner",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2" as string | undefined,
-    practiceAreas: ["family-law", "immigration-law"],
-    bio: "Renee co-founded the firm on the idea that clients deserve a straight answer, not a runaround.",
+    slug: "james-ashworth",
+    name: "James Ashworth",
+    title: "Partner, Probate & Estates",
+    image: undefined as string | undefined,
+    practiceAreas: ["probate-estates", "contentious-probate"],
+    bio: "James guides executors and families through probate, from the first call after a death to the final distribution.",
     longBio:
-      "Renee has spent nearly two decades advising families through divorce, custody, and immigration matters, from straightforward uncontested filings to complex cross-border cases. She's known for translating dense legal language into a decision clients can actually make.",
-    education: [
-      { school: "University of Chicago Law School", degree: "JD", year: "2003" },
-      { school: "DePaul University", degree: "B.A., Political Science", year: "2000" },
-    ],
-    barAdmissions: ["Illinois"],
+      "James handles estate administration of every size, including estates with overseas property and unresolved tax affairs. Where a will is challenged, he works to settle the dispute through negotiation or mediation before it reaches court.",
+    qualifications: ["Fictional profile created for this sample website"],
     notableMatters: [
-      "Negotiated a parenting plan preserving joint custody across a cross-border relocation",
-      "Represented a family through a complex sponsorship and permanent residency application",
+      "Administered an estate with property in England, Spain and Scotland",
+      "Settled a claim under the Inheritance Act 1975 at mediation",
     ],
   },
   {
-    slug: "marcus-whitfield",
-    name: "Marcus Whitfield",
-    title: "Attorney at Law, Head of Wills, Estates and Trusts",
-    image: "/images/attorneys/marcus-whitfield.jpg" as string | undefined,
-    practiceAreas: ["estate-planning"],
-    bio: "Marcus leads the Wills, Estates and Trusts practice at Dwight Davis & Associates, advising clients across Illinois on wills, estate planning, and trust administration.",
+    slug: "priya-raman",
+    name: "Priya Raman",
+    title: "Senior Associate, Powers of Attorney & Court of Protection",
+    image: undefined as string | undefined,
+    practiceAreas: ["lasting-powers-of-attorney", "court-of-protection"],
+    bio: "Priya helps clients plan for later life and supports families when a loved one can no longer manage their own affairs.",
     longBio:
-      "Marcus Whitfield, Esq. heads the Wills, Estates and Trusts group at Dwight Davis & Associates, based in Chicago. He advises individuals and families on wills, estate planning, and trust administration.",
-    education: [] as { school: string; degree: string; year: string }[],
-    barAdmissions: ["Illinois"],
-    notableMatters: [] as string[],
+      "Priya prepares lasting powers of attorney and advises attorneys on their duties. When no LPA is in place, she handles deputyship applications to the Court of Protection and supports deputies through annual reporting.",
+    qualifications: ["Fictional profile created for this sample website"],
+    notableMatters: [
+      "Obtained a property and financial affairs deputyship within four months",
+      "Advised a family on a statutory will application",
+    ],
   },
 ] as const;
 

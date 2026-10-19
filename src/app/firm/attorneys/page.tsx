@@ -7,7 +7,7 @@ import { AttorneyAccountRow } from "@/components/portal/attorney-account-row";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 
-export const metadata = { title: "Attorney Access | Firm Workspace" };
+export const metadata = { title: "Solicitor Access | Firm Workspace" };
 
 export default async function FirmAttorneysPage() {
   const session = await auth();
@@ -29,9 +29,9 @@ export default async function FirmAttorneysPage() {
 
   return (
     <div>
-      <h1 className="font-display text-3xl">Attorney Access</h1>
+      <h1 className="font-display text-3xl">Solicitor Access</h1>
       <p className="mt-2 text-muted-foreground">
-        Bring on other attorneys yourself, stored in Upstash Redis, not a
+        Bring on other solicitors yourself, stored in Upstash Redis, not a
         local file or a relational database. A new attorney signs in at{" "}
         <code className="text-xs">/login</code> with the email and password
         you set here, then can self-assign to any unclaimed matter from{" "}
@@ -45,11 +45,11 @@ export default async function FirmAttorneysPage() {
       </div>
 
       <div className="mt-10">
-        <h2 className="font-display text-xl">Existing Attorney Accounts</h2>
+        <h2 className="font-display text-xl">Existing Solicitor Accounts</h2>
         <div className="mt-4">
           {accounts.length === 0 ? (
             <Card className="text-center text-muted-foreground">
-              No attorney accounts created yet.
+              No solicitor accounts created yet.
             </Card>
           ) : (
             <ul className="divide-y divide-border rounded-sm border border-border bg-card shadow-(--shadow-card)">

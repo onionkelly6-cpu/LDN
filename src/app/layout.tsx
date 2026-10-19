@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono, Fraunces } from "next/font/google";
 import { SplashScreen } from "@/components/motion/splash-screen";
-import { SITE_NAME, SITE_URL } from "@/lib/site-config";
-import { jsonLd } from "@/lib/structured-data";
+import { SITE_DEMO_NOTICE, SITE_NAME, SITE_URL } from "@/lib/site-config";
 import "./globals.css";
 
 const sansFont = IBM_Plex_Sans({
@@ -17,9 +16,9 @@ const monoFont = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-// Fraunces: a variable serif with real optical-size character — replaces the
-// flatter Libre Caslon Display so headings carry more personality without
-// losing the firm's formal tone. Italic is used for pull-quotes/taglines.
+// Fraunces: a variable serif with real optical-size character, so headings
+// carry personality without losing the firm's formal tone. Italic is used
+// for pull-quotes/taglines.
 const displayFont = Fraunces({
   variable: "--font-display-family",
   subsets: ["latin"],
@@ -29,7 +28,7 @@ const displayFont = Fraunces({
 });
 
 const DEFAULT_DESCRIPTION =
-  "Dwight Davis & Associates is a modern general-practice law firm serving families, founders, and business operators with clear legal strategy and transparent client communication.";
+  "Sample website for Crestbridge, a fictional London private client firm: wills, probate, trusts and estate planning, with a secure client portal. Not a real solicitors' practice.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -38,12 +37,16 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
+  // Sample site for a fictional firm: keep it out of search results so it
+  // is never mistaken for a real practice.
+  robots: { index: false, follow: false },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
+    locale: "en_GB",
   },
   twitter: {
     card: "summary_large_image",
@@ -58,22 +61,6 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-const legalServiceSchema = {
-  "@context": "https://schema.org",
-  "@type": "LegalService",
-  name: SITE_NAME,
-  url: SITE_URL,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "225 W Wacker Drive, Suite 1800",
-    postalCode: "60606",
-    addressLocality: "Chicago",
-    addressRegion: "IL",
-    addressCountry: "US",
-  },
-  areaServed: ["Illinois", "United States"],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,15 +68,17 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${sansFont.variable} ${monoFont.variable} ${displayFont.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd(legalServiceSchema) }}
-        />
         <SplashScreen />
+        <div
+          role="note"
+          className="bg-[#7a2e22] px-4 py-2 text-center text-xs leading-snug text-[#fbf3e6] sm:text-sm"
+        >
+          <strong className="font-semibold">Sample website:</strong> {SITE_DEMO_NOTICE}
+        </div>
         {children}
       </body>
     </html>

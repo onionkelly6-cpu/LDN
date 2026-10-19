@@ -72,7 +72,7 @@ export default async function FirmMattersPage() {
         <div className="mt-14">
           <h2 className="font-display text-xl">Available Clients</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Not yet assigned to an attorney. Claim one to add it to your
+            Not yet assigned to a solicitor. Claim one to add it to your
             docket.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

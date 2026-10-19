@@ -5,9 +5,9 @@ import { CaseResultsExplorer } from "@/components/marketing/case-results-explore
 import { caseResultStats } from "@/lib/content/case-results";
 
 export const metadata = {
-  title: "Case Results",
+  title: "Illustrative Outcomes",
   description:
-    "A sample of case results Dwight Davis & Associates has secured for clients: settlements, dismissals, and closed deals across every practice area.",
+    "Illustrative private client matters for Crestbridge, a fictional firm on this sample website. None of these matters took place.",
 };
 
 export default function CaseResultsPage() {
@@ -27,10 +27,10 @@ export default function CaseResultsPage() {
         </div>
         <div className="relative mx-auto max-w-4xl px-6 py-28">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-2">
-            Track Record
+            Example Matters
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">
-            Cases We&apos;ve Won
+            Illustrative Outcomes
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
             A sample of outcomes we&apos;ve secured for clients across every
@@ -42,7 +42,7 @@ export default function CaseResultsPage() {
             Every case depends on its own facts.
           </p>
           <Link href="/contact" className="mt-8 inline-block" transitionTypes={["nav-forward"]}>
-            <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#10233d] hover:opacity-90">
+            <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#16362c] hover:opacity-90">
               Discuss Your Case
             </Button>
           </Link>

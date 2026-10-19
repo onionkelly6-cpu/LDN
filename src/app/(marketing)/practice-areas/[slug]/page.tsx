@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: area.name,
     description: area.blurb,
     openGraph: {
-      title: `${area.name} | Dwight Davis & Associates`,
+      title: `${area.name} | Crestbridge Private Client Solicitors`,
       description: area.blurb,
     },
   };
@@ -91,8 +91,8 @@ export default async function PracticeAreaPage({ params }: Props) {
             {area.longDescription}
           </p>
           <Link href="/contact" className="mt-8 inline-block" transitionTypes={["nav-forward"]}>
-            <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#10233d] hover:opacity-90">
-              Discuss a {area.name} Matter
+            <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#16362c] hover:opacity-90">
+              Enquire about {area.name}
             </Button>
           </Link>
         </div>
@@ -101,7 +101,7 @@ export default async function PracticeAreaPage({ params }: Props) {
       <section className="border-t border-border bg-card">
         <div className="mx-auto max-w-4xl px-6 py-16">
           <h2 className="font-display text-2xl">
-            Why Dwight Davis & Associates for {area.name}
+            Why Crestbridge for {area.name}
           </h2>
           <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {area.whyUs.map((reason, i) => (
@@ -156,7 +156,7 @@ export default async function PracticeAreaPage({ params }: Props) {
         <section className="border-t border-border bg-card">
           <div className="mx-auto max-w-4xl px-6 py-16">
             <h2 className="font-display text-2xl">
-              {area.name} Results
+              Illustrative {area.name} Matters
             </h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {relatedResults.map((result, i) => (
@@ -177,7 +177,7 @@ export default async function PracticeAreaPage({ params }: Props) {
               href="/case-results"
               className="mt-6 inline-block text-sm text-accent hover:underline"
             >
-              See all case results
+              See all illustrative outcomes
             </Link>
           </div>
         </section>
@@ -186,10 +186,10 @@ export default async function PracticeAreaPage({ params }: Props) {
       {relatedAttorneys.length > 0 && (
         <section className="border-t border-border">
           <div className="mx-auto max-w-4xl px-6 py-16">
-            <h2 className="font-display text-2xl">Attorneys in this Area</h2>
+            <h2 className="font-display text-2xl">Solicitors in this Area</h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {relatedAttorneys.map((attorney) => (
-                <Link key={attorney.slug} href={`/attorneys/${attorney.slug}`}>
+                <Link key={attorney.slug} href={`/solicitors/${attorney.slug}`}>
                   <Card className="lift flex h-full items-center gap-4 rounded-none transition-colors hover:border-accent">
                     <AttorneyAvatar name={attorney.name} image={attorney.image} size="sm" />
                     <div>

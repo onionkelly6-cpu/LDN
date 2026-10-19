@@ -23,7 +23,7 @@ export default async function LoginPage({ searchParams }: Props) {
         </Link>
         <h1 className="mt-6 font-display text-2xl">Client Portal Sign In</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Enter your email and password to sign in. Client, attorney, and
+          Enter your email and password to sign in. Client, solicitor, and
           firm staff accounts all use this same form.
         </p>
         {params.error && (

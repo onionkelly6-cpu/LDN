@@ -1,30 +1,24 @@
 import {
-  HeartHandshake,
-  Building2,
-  ShieldAlert,
-  Home,
   ScrollText,
+  Landmark,
+  KeyRound,
+  PoundSterling,
+  HeartHandshake,
   Gavel,
-  Briefcase,
-  Globe,
-  Banknote,
-  Lightbulb,
+  Scale,
   type LucideIcon,
 } from "lucide-react";
 import type { PracticeAreaSlug } from "@/lib/content/practice-areas";
 import { cn } from "@/lib/utils";
 
 const iconBySlug: Record<PracticeAreaSlug, LucideIcon> = {
-  "family-law": HeartHandshake,
-  "business-corporate": Building2,
-  "personal-injury": ShieldAlert,
-  "real-estate": Home,
-  "estate-planning": ScrollText,
-  "criminal-defense": Gavel,
-  "employment-law": Briefcase,
-  "immigration-law": Globe,
-  bankruptcy: Banknote,
-  "intellectual-property": Lightbulb,
+  "wills-succession": ScrollText,
+  "probate-estates": Landmark,
+  trusts: KeyRound,
+  "inheritance-tax": PoundSterling,
+  "lasting-powers-of-attorney": HeartHandshake,
+  "court-of-protection": Gavel,
+  "contentious-probate": Scale,
 };
 
 export function PracticeAreaIcon({

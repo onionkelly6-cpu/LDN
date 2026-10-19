@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
+import { CREST_PATHS } from "@/components/brand/crest-paths";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-// Matches the "Scale" mark used as the site logo in the header, footer,
-// and splash screen (lucide-react's `Scale` icon), so the browser tab
-// icon is the same mark instead of a separate design.
+// Same crest-and-bridge mark as the in-page Wordmark, so the browser tab
+// icon matches the site logo.
 export default function Icon() {
   return new ImageResponse(
     (
@@ -16,26 +16,24 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#f5f2ea",
+          background: "#16362c",
           border: "1px solid #b8863b",
-          borderRadius: "50%",
+          borderRadius: 4,
         }}
       >
         <svg
-          width="20"
-          height="20"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#10233d"
-          strokeWidth="2"
+          stroke="#e3c587"
+          strokeWidth="1.8"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M12 3v18" />
-          <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
-          <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
-          <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
-          <path d="M7 21h10" />
+          {CREST_PATHS.map((d) => (
+            <path key={d} d={d} />
+          ))}
         </svg>
       </div>
     ),

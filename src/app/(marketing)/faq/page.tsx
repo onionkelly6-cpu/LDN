@@ -6,7 +6,7 @@ import { jsonLd } from "@/lib/structured-data";
 export const metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Answers to the questions we hear most often about consultations, billing, jurisdictions, and the Dwight Davis & Associates client portal.",
+    "Frequently asked questions about Crestbridge, a fictional private client firm on this sample website, and its client portal.",
 };
 
 const faqPageSchema = {

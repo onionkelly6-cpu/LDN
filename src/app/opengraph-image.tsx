@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { SITE_NAME } from "@/lib/site-config";
+import { CREST_PATHS } from "@/components/brand/crest-paths";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -16,7 +17,7 @@ export default function OpengraphImage() {
           alignItems: "center",
           justifyContent: "center",
           background: "#f5f2ea",
-          color: "#10233d",
+          color: "#16362c",
         }}
       >
         <div
@@ -24,24 +25,34 @@ export default function OpengraphImage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: 96,
-            height: 96,
-            borderRadius: "50%",
+            width: 112,
+            height: 112,
+            borderRadius: 8,
             border: "2px solid #b8863b",
-            background: "rgba(156,107,46,0.1)",
-            color: "#10233d",
-            fontSize: 40,
-            fontFamily: "serif",
+            background: "#16362c",
             marginBottom: 32,
           }}
         >
-          Y
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#e3c587"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {CREST_PATHS.map((d) => (
+              <path key={d} d={d} />
+            ))}
+          </svg>
         </div>
         <div style={{ display: "flex", fontSize: 56, fontFamily: "serif" }}>
           {SITE_NAME}
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "#6b6255", marginTop: 16 }}>
-          Steady counsel, clearly communicated.
+        <div style={{ display: "flex", fontSize: 26, color: "#6b6255", marginTop: 16 }}>
+          Sample website · Fictional firm · Not a real solicitors&apos; practice
         </div>
       </div>
     ),

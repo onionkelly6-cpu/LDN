@@ -39,7 +39,7 @@ export default async function DashboardPage() {
     <div>
       <h1 className="font-display text-3xl">Your Matters</h1>
       <p className="mt-2 text-muted-foreground">
-        Every matter Dwight Davis & Associates is handling on your behalf, with its
+        Every matter Crestbridge is handling on your behalf, with its
         current stage and next key date.
       </p>
 
@@ -56,7 +56,7 @@ export default async function DashboardPage() {
 
       <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[2fr_1fr]">
         <div>
-          <h2 className="font-display text-xl">Docket Board</h2>
+          <h2 className="font-display text-xl">Matter Overview</h2>
           <div className="mt-4">
             <DocketBoard
               rows={rows}

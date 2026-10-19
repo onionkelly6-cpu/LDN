@@ -6,13 +6,13 @@ import { Reveal } from "@/components/motion/reveal";
 import { offices } from "@/lib/content/offices";
 
 export const metadata = {
-  title: "Locations",
+  title: "Location",
   description:
-    "Dwight Davis & Associates office locations and hours. Walk-ins accepted by appointment; portal clients can message their attorney directly.",
+    "Where Crestbridge, a fictional London private client firm on this sample website, is based.",
 };
 
 const officeImages = [
-  "https://images.unsplash.com/photo-1546436836-07a91091f160",
+  "https://images.unsplash.com/photo-1529655683826-aba9b3e77383",
 ];
 
 export default function LocationsPage() {
@@ -21,7 +21,7 @@ export default function LocationsPage() {
       <section className="relative overflow-hidden bg-[#0c0a08]">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1522083165195-3424ed129620"
+            src="https://images.unsplash.com/photo-1486299267070-83823f5448dd"
             alt=""
             fill
             priority
@@ -32,12 +32,13 @@ export default function LocationsPage() {
         </div>
         <div className="relative mx-auto max-w-4xl px-6 py-28">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-2">
-            Visit Us
+            London, United Kingdom
           </p>
-          <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">Our Offices</h1>
+          <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">Our Location</h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
-            Our office accepts walk-ins by appointment. Portal clients can
-            also message their attorney directly.
+            The fictional firm is presented as a London practice. Meetings are
+            by appointment, in person or by video, and portal clients can
+            message their solicitor directly.
           </p>
         </div>
       </section>
@@ -72,7 +73,7 @@ export default function LocationsPage() {
                     href="/contact"
                     className="lift mt-6 inline-flex items-center gap-1.5 border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent"
                   >
-                    Get in Touch
+                    Make an Enquiry
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
                   </Link>
                 </div>

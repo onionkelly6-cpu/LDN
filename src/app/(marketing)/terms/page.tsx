@@ -1,6 +1,6 @@
 ﻿export const metadata = {
   title: "Terms of Use",
-  description: "Terms governing use of the Dwight Davis & Associates public site and client portal.",
+  description: "Terms governing use of this sample website for Crestbridge, a fictional firm.",
 };
 
 export default function TermsPage() {
@@ -11,7 +11,7 @@ export default function TermsPage() {
         Placeholder: real terms of use, reviewed by counsel, land here
         before this site handles real client data. It will cover acceptable
         use of the public site and client portal, and the limits of
-        information provided here (no attorney-client relationship is formed
+        information provided here (no solicitor-client relationship is formed
         by browsing this site or submitting the contact form).
       </p>
     </div>

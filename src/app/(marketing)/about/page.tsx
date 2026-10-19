@@ -6,28 +6,28 @@ import { Reveal } from "@/components/motion/reveal";
 export const metadata = {
   title: "About",
   description:
-    "Dwight Davis & Associates has served clients since 2011 across family law, business, personal injury, real estate, estate planning, and more, with a client portal that always shows you where your matter stands.",
+    "About Crestbridge, a fictional London private client firm on this sample website: wills, probate, trusts and later-life planning, with a client portal that always shows where your matter stands.",
 };
 
 const stats = [
-  { label: "Years serving clients", value: "15+" },
-  { label: "Matters opened", value: "4,200+" },
-  { label: "Practice areas", value: `${practiceAreas.length}` },
-  { label: "Client portal uptime", value: "99.9%" },
+  { label: "Private client practice areas", value: `${practiceAreas.length}` },
+  { label: "Based in", value: "London" },
+  { label: "Client portal access", value: "24/7" },
+  { label: "Status", value: "Sample site" },
 ];
 
 const values = [
   {
     title: "Responsive Communication",
-    body: "You will never wonder if your call was received. Every attorney and staff member commits to a same-business-day response.",
+    body: "Families dealing with a bereavement should never be left waiting. Every enquiry is acknowledged promptly and every client has a named solicitor.",
   },
   {
-    title: "Transparent Billing",
-    body: "Fee arrangements are agreed to in writing before work begins, whether that's hourly, flat-fee, or contingency.",
+    title: "Transparent Fees",
+    body: "Fixed fees for wills and lasting powers of attorney, and a written estimate for every probate, agreed before work begins.",
   },
   {
-    title: "Real Trial Experience",
-    body: "Our attorneys prepare every matter as though it could go to trial, which tends to produce better settlements too.",
+    title: "Thinking Generations Ahead",
+    body: "Our advice looks beyond the immediate document to how your estate will pass, and how your family will live with the result.",
   },
   {
     title: "A Portal That Keeps You Informed",
@@ -52,17 +52,17 @@ export default function AboutPage() {
         </div>
         <div className="relative mx-auto max-w-4xl px-6 py-28">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-2">
-            Est. 2011 — Chicago
+            Fictional firm — London
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">
-            About Dwight Davis & Associates
+            About Crestbridge
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
-            Dwight Davis & Associates was founded in Chicago in 2011 on a
-            simple premise: clients deserve a straight answer and to always
-            know where their matter stands. More than a decade later,
-            that&apos;s still what sets us apart: steady counsel, clearly
-            communicated, backed by a portal that keeps you informed without
+            Crestbridge is a fictional London private client firm, created for
+            this sample website. It is presented as a practice built on a
+            simple idea: families planning ahead, or dealing with a loss,
+            deserve clear advice and should always know where their matter
+            stands, backed by a portal that keeps them informed without
             having to ask.
           </p>
         </div>
@@ -90,9 +90,9 @@ export default function AboutPage() {
           />
         </Reveal>
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">Why Dwight Davis & Associates</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-accent">Why Crestbridge</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl">
-            A different kind of counsel
+            Private client work, done carefully
           </h2>
           <div className="mt-10 space-y-8">
             {values.map((value, i) => (
@@ -123,8 +123,7 @@ export default function AboutPage() {
             ))}
           </div>
           <p className="mt-10 text-xs text-background/50">
-            Testimonials reflect individual experiences and do not guarantee
-            a similar outcome for your matter.
+            Illustrative testimonials for a fictional firm. They are not from real clients.
           </p>
         </div>
       </section>

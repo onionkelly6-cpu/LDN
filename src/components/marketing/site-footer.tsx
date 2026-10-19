@@ -1,24 +1,24 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { practiceAreas } from "@/lib/content/practice-areas";
 import { offices } from "@/lib/content/offices";
 import { Wordmark } from "@/components/brand/wordmark";
-import { SITE_CONTACT_EMAIL, SITE_NAME } from "@/lib/site-config";
+import { SITE_DEMO_NOTICE, SITE_NAME } from "@/lib/site-config";
 
 const firmLinks = [
   { href: "/about", label: "About the Firm" },
-  { href: "/attorneys", label: "Our Attorneys" },
-  { href: "/case-results", label: "Case Results" },
+  { href: "/solicitors", label: "Our Solicitors" },
+  { href: "/case-results", label: "Illustrative Outcomes" },
   { href: "/faq", label: "FAQ" },
-  { href: "/locations", label: "Locations" },
-  { href: "/contact", label: "Contact" },
+  { href: "/locations", label: "Location" },
+  { href: "/contact", label: "Make an Enquiry" },
 ];
 
 const legalLinks = [
-  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/privacy", label: "Privacy Notice" },
   { href: "/terms", label: "Terms of Use" },
-  { href: "/attorney-advertising", label: "Attorney Advertising Disclaimer" },
+  { href: "/regulatory-information", label: "Regulatory Information" },
 ];
 
 export function SiteFooter() {
@@ -27,14 +27,14 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="flex flex-col gap-6 border-b border-background/15 pb-14 sm:flex-row sm:items-end sm:justify-between">
           <h2 className="max-w-lg font-display text-3xl leading-tight sm:text-4xl">
-            Ready to talk about your matter?
+            Planning ahead, or dealing with an estate?
           </h2>
           <Link href="/contact" transitionTypes={["nav-forward"]}>
             <Button
               variant="primary"
               className="rounded-none bg-background text-foreground hover:opacity-90"
             >
-              Request a Consultation
+              Make an Enquiry
             </Button>
           </Link>
         </div>
@@ -45,9 +45,9 @@ export function SiteFooter() {
               <Wordmark size="md" textClassName="text-background" />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-background/65">
-              Built for people and companies who want legal strategy without
-              fog. You get practical guidance and a portal that keeps every
-              deadline, document, and update in view.
+              Wills, probate, trusts and later-life planning for families,
+              with a secure portal that keeps every document and update in
+              one place.
             </p>
           </div>
 
@@ -86,31 +86,32 @@ export function SiteFooter() {
 
           <div>
             <h3 className="font-mono text-xs tracking-widest text-accent-2 uppercase">
-              Get in Touch
+              Location
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-background/65">
-              <li className="flex items-start gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent-2" aria-hidden />
-                <span className="font-mono">{SITE_CONTACT_EMAIL}</span>
-              </li>
-            </ul>
-            <ul className="mt-5 space-y-3 text-xs text-background/65">
               {offices.map((office) => (
-                <li key={office.name}>
-                  <p className="font-medium text-background">{office.name}</p>
-                  <p>{office.address}</p>
+                <li key={office.name} className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-2" aria-hidden />
+                  <span>
+                    <span className="block font-medium text-background">{office.name}</span>
+                    {office.address}
+                    <span className="block text-xs">{office.hours}</span>
+                  </span>
                 </li>
               ))}
             </ul>
+            <p className="mt-5 text-xs text-background/65">
+              Enquiries are taken through the{" "}
+              <Link href="/contact" className="underline hover:text-background">
+                enquiry form
+              </Link>
+              .
+            </p>
           </div>
         </div>
 
         <div className="mt-14 border-t border-background/15 pt-8 text-sm text-background/65">
-          <p className="max-w-2xl">
-            Attorney Advertising. Prior results do not guarantee a similar
-            outcome. This site is for general information only and does not
-            constitute legal advice.
-          </p>
+          <p className="max-w-3xl">{SITE_DEMO_NOTICE}</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs">
             {legalLinks.map((link) => (
               <Link key={link.href} href={link.href} className="hover:text-background">
@@ -119,7 +120,7 @@ export function SiteFooter() {
             ))}
           </div>
           <p className="mt-6">
-            &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+            &copy; {new Date().getFullYear()} {SITE_NAME} (fictional sample firm).
           </p>
         </div>
       </div>

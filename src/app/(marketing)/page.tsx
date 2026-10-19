@@ -12,10 +12,10 @@ import { caseResults } from "@/lib/content/case-results";
 import { testimonials } from "@/lib/content/testimonials";
 
 const stats = [
-  { label: "Years serving clients", value: "15+" },
-  { label: "Matters opened", value: "5,100+" },
-  { label: "Practice areas", value: `${practiceAreas.length}` },
-  { label: "Client portal uptime", value: "99.98%" },
+  { label: "Private client practice areas", value: `${practiceAreas.length}` },
+  { label: "Based in", value: "London" },
+  { label: "Client portal access", value: "24/7" },
+  { label: "Status", value: "Sample site" },
 ];
 
 const portalSteps = [
@@ -25,25 +25,25 @@ const portalSteps = [
   },
   {
     title: "Track it in real time",
-    body: "See your case status, next key date, and stage on your personal Docket Board, no phone tag required.",
+    body: "See your matter's stage, next key date and progress on your personal dashboard, without chasing for updates.",
   },
   {
     title: "Stay in the loop",
-    body: "Documents, messages, and status changes all land in one place, with email notifications you control.",
+    body: "Documents, messages and status changes all land in one secure place.",
   },
 ];
 
 const learnMore = [
   { href: "/about", title: "About the Firm", body: "Our story, our values, and what clients say." },
-  { href: "/case-results", title: "Case Results", body: "A sample of outcomes we've secured for clients." },
+  { href: "/case-results", title: "Illustrative Outcomes", body: "Example matters showing how the firm would work." },
   { href: "/faq", title: "FAQ", body: "Answers to the questions we hear most often." },
-  { href: "/locations", title: "Locations", body: "Office addresses, hours, and how to reach us." },
+  { href: "/locations", title: "Location", body: "Where the firm is based and how meetings work." },
 ];
 
 const featuredSlugs = [
-  "multi-vehicle-collision-settlement",
-  "series-a-financing",
-  "unlawful-search-dismissal",
+  "farm-succession-plan",
+  "multi-jurisdiction-estate",
+  "deputyship-granted",
 ] as const;
 
 const featuredResults = featuredSlugs.map(
@@ -56,7 +56,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-[#0c0a08]">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1496588152823-86ff7695e68f"
+            src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad"
             alt=""
             fill
             priority
@@ -67,20 +67,20 @@ export default function HomePage() {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 pt-28 pb-20 sm:pt-36 sm:pb-28">
           <p className="mb-6 font-mono text-xs uppercase tracking-[0.3em] text-accent-2">
-            {SITE_WORDMARK} — Chicago, IL
+            {SITE_WORDMARK} — London, United Kingdom
           </p>
           <h1 className="max-w-3xl font-display text-5xl leading-[1.05] text-[#f5f2ea] sm:text-6xl lg:text-7xl">
-            Steady counsel,<br />clearly communicated.
+            Your wishes,<br />carefully carried forward.
           </h1>
           <p className="mt-8 max-w-xl text-lg text-[#f5f2ea]/70">
-            Dwight Davis & Associates helps families and founders move through legal
-            complexity with a practical plan, honest timelines, and a portal
-            built to keep you informed at every step.
+            Crestbridge advises families on wills, trusts, probate and later-life
+            planning, with clear advice, honest timescales and a secure portal
+            that keeps you informed at every step.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/contact" transitionTypes={["nav-forward"]}>
-              <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#10233d] hover:opacity-90">
-                Request a Consultation
+              <Button variant="primary" className="rounded-none bg-[#f5f2ea] text-[#16362c] hover:opacity-90">
+                Make an Enquiry
               </Button>
             </Link>
             <Link href="/login" transitionTypes={["nav-forward"]}>
@@ -90,8 +90,8 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-[#f5f2ea]/15 pt-8 text-xs tracking-wide text-[#f5f2ea]/50 uppercase">
-            <span>Licensed in:</span>
-            <span className="font-mono">Illinois</span>
+            <span>Fictional sample firm</span>
+            <span className="font-mono">Not regulated by the SRA</span>
           </div>
         </div>
       </section>
@@ -160,8 +160,8 @@ export default function HomePage() {
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-accent">02 — Track Record</p>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Cases We&apos;ve Won</h2>
+                <p className="font-mono text-xs uppercase tracking-widest text-accent">02 — Example Matters</p>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Illustrative Outcomes</h2>
               </div>
               <Link
                 href="/case-results"
@@ -183,7 +183,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Prior results do not guarantee a similar outcome in your matter.
+            Illustrative examples for a fictional firm. These matters did not take place.
           </p>
         </div>
       </section>
@@ -223,12 +223,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-6 py-24">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-accent">04 — The Team</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl">Our Attorneys</h2>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl">Our Solicitors</h2>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {attorneys.map((attorney, i) => (
               <Reveal key={attorney.slug} delay={i * 80}>
-                <Link href={`/attorneys/${attorney.slug}`} className="group block h-full">
+                <Link href={`/solicitors/${attorney.slug}`} className="group block h-full">
                   <AttorneyPortrait name={attorney.name} image={attorney.image} />
                   <h3 className="mt-5 font-display text-xl">{attorney.name}</h3>
                   <p className="mt-1 text-sm text-accent">{attorney.title}</p>

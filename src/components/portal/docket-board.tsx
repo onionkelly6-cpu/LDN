@@ -13,17 +13,17 @@ export interface DocketRow {
 }
 
 const statusTone: Record<string, string> = {
-  Filed: "bg-muted text-muted-foreground",
-  Discovery: "bg-warning/15 text-warning",
-  "Hearing Scheduled": "bg-accent/15 text-accent",
-  Resolved: "bg-success/15 text-success",
+  Instructed: "bg-muted text-muted-foreground",
+  "In Progress": "bg-warning/15 text-warning",
+  "Awaiting Third Party": "bg-accent/15 text-accent",
+  Completed: "bg-success/15 text-success",
 };
 
 const statusDot: Record<string, string> = {
-  Filed: "bg-muted-foreground",
-  Discovery: "bg-warning",
-  "Hearing Scheduled": "bg-accent",
-  Resolved: "bg-success",
+  Instructed: "bg-muted-foreground",
+  "In Progress": "bg-warning",
+  "Awaiting Third Party": "bg-accent",
+  Completed: "bg-success",
 };
 
 function StatusBadge({ status }: { status: string }) {
@@ -73,7 +73,7 @@ export function DocketBoard({
               <th scope="col" className="px-4 py-3 font-medium">Practice Area</th>
             )}
             {showAttorney && (
-              <th scope="col" className="px-4 py-3 font-medium">Attorney</th>
+              <th scope="col" className="px-4 py-3 font-medium">Solicitor</th>
             )}
             {showClient && (
               <th scope="col" className="px-4 py-3 font-medium">Client</th>

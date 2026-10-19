@@ -1,8 +1,9 @@
-// Placeholder demo content — swap for real office locations.
+// Fictional firm: the location is given at city level only, with no
+// street address, phone number or email.
 export const offices = [
   {
-    name: "Chicago Office",
-    address: "225 W Wacker Drive, Suite 1800, Chicago, IL 60606",
-    hours: "By appointment",
+    name: "London Office",
+    address: "London, United Kingdom",
+    hours: "Meetings by appointment",
   },
 ] as const;

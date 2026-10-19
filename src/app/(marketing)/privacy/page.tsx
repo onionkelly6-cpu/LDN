@@ -1,6 +1,6 @@
 ﻿export const metadata = {
   title: "Privacy Policy",
-  description: "How Dwight Davis & Associates collects, uses, and protects information submitted through the public site and client portal.",
+  description: "How this sample website for Crestbridge, a fictional firm, handles information submitted through the public site and client portal.",
 };
 
 export default function PrivacyPage() {

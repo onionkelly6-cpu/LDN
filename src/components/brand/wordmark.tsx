@@ -1,11 +1,12 @@
 import { cn } from "@/lib/utils";
-import { SITE_WORDMARK } from "@/lib/site-config";
+import { SITE_WORDMARK, SITE_WORDMARK_SUBTITLE } from "@/lib/site-config";
+import { CREST_PATHS } from "@/components/brand/crest-paths";
 
 const sizes = {
-  sm: { box: 32, stroke: 18, gap: "gap-2", text: "text-base" },
-  md: { box: 40, stroke: 22, gap: "gap-2.5", text: "text-lg" },
-  lg: { box: 56, stroke: 30, gap: "gap-3", text: "text-2xl" },
-  xl: { box: 88, stroke: 46, gap: "gap-4", text: "text-3xl" },
+  sm: { box: 32, stroke: 20, gap: "gap-2", text: "text-base", sub: "text-[8px]" },
+  md: { box: 40, stroke: 26, gap: "gap-2.5", text: "text-lg", sub: "text-[9px]" },
+  lg: { box: 52, stroke: 34, gap: "gap-3", text: "text-2xl", sub: "text-[10px]" },
+  xl: { box: 88, stroke: 58, gap: "gap-4", text: "text-3xl", sub: "text-xs" },
 } as const;
 
 type WordmarkProps = {
@@ -16,22 +17,23 @@ type WordmarkProps = {
 };
 
 /**
- * Scale-of-justice mark in a ringed circle, matching the favicon in
- * src/app/icon.tsx so the browser tab icon and the in-page mark are the
- * same design.
+ * Crest-and-bridge mark on a brass-edged tile, with a two-line wordmark.
+ * Shares its path data with src/app/icon.tsx and opengraph-image.tsx so the
+ * favicon, share card and in-page logo stay the same design.
  */
 export function Wordmark({ size = "md", showText = true, className, textClassName }: WordmarkProps) {
-  const { box, stroke, gap, text } = sizes[size];
+  const { box, stroke, gap, text, sub } = sizes[size];
 
   return (
     <span className={cn("inline-flex items-center", gap, className)}>
       <span
-        className="flex shrink-0 items-center justify-center rounded-full"
+        className="flex shrink-0 items-center justify-center"
         style={{
           width: box,
           height: box,
-          background: "#f5f2ea",
+          background: "#16362c",
           border: "1px solid #b8863b",
+          borderRadius: 4,
         }}
       >
         <svg
@@ -39,28 +41,30 @@ export function Wordmark({ size = "md", showText = true, className, textClassNam
           height={stroke}
           viewBox="0 0 24 24"
           fill="none"
-          stroke="#10233d"
-          strokeWidth="2"
+          stroke="#e3c587"
+          strokeWidth="1.6"
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden
         >
-          <path d="M12 3v18" />
-          <path d="m19 8 3 8a5 5 0 0 1-6 0zV7" />
-          <path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" />
-          <path d="m5 8 3 8a5 5 0 0 1-6 0zV7" />
-          <path d="M7 21h10" />
+          {CREST_PATHS.map((d) => (
+            <path key={d} d={d} />
+          ))}
         </svg>
       </span>
       {showText && (
-        <span
-          className={cn(
-            "font-display leading-none tracking-tight text-foreground",
-            text,
-            textClassName
-          )}
-        >
-          {SITE_WORDMARK}
+        <span className={cn("flex flex-col text-foreground", textClassName)}>
+          <span className={cn("font-display leading-none tracking-tight", text)}>
+            {SITE_WORDMARK}
+          </span>
+          <span
+            className={cn(
+              "mt-1 font-mono leading-none tracking-[0.22em] uppercase opacity-70",
+              sub
+            )}
+          >
+            {SITE_WORDMARK_SUBTITLE}
+          </span>
         </span>
       )}
     </span>

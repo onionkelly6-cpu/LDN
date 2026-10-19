@@ -1,541 +1,291 @@
-// Placeholder demo content — swap for the real firm's practice area copy
-// when it's available. Mirrors the eventual `PracticeArea` table (M2).
+// Sample content for a fictional private client firm in England and Wales.
+// General information only, not legal advice; figures (nil-rate bands,
+// deadlines) reflect the rules at the time of writing.
 export const practiceAreas = [
   {
-    slug: "family-law",
-    name: "Family Law",
-    code: "FL",
-    blurb:
-      "Divorce, custody, and support matters handled with steady, practical counsel.",
+    slug: "wills-succession",
+    name: "Wills & Succession Planning",
+    code: "WS",
+    blurb: "Wills that reflect your wishes, protect the people you care about and stand up to scrutiny.",
     longDescription:
-      "Family law matters are rarely just legal problems: they're personal ones, often unfolding during one of the hardest periods of someone's life. We handle everything from straightforward uncontested divorces to complex custody disputes spanning multiple states, always with an eye toward resolving things without unnecessary conflict where possible, and full trial preparation when it isn't.",
+      "A will is the foundation of any succession plan. We take time to understand your family, your assets and what matters to you, then prepare a will that deals with second marriages, children from earlier relationships, business interests and overseas property, so the people you leave behind are not left guessing.",
     whyUs: [
-      "Attorneys who've clerked in family court and know how judges actually rule",
-      "Mediation-first approach that keeps costs and conflict down when appropriate",
-      "Direct attorney access through the client portal, no waiting on hold",
+      "Plain-English drafting you can read and understand before you sign",
+      "Supervised signing so formalities under the Wills Act 1837 are met",
+      "Safe storage of your original will and a reminder to review it",
     ],
     services: [
-      "Divorce & dissolution",
-      "Child custody & parenting plans",
-      "Child & spousal support",
-      "Prenuptial & postnuptial agreements",
-      "Adoption",
-      "Domestic violence protective orders",
+      "Single and mirror wills",
+      "Wills with discretionary and life-interest trusts",
+      "Business property and farm succession",
+      "Wills for clients with overseas assets",
+      "Letters of wishes and guardianship appointments",
+      "Will reviews after marriage, divorce or a new child",
     ],
     processSteps: [
-      {
-        title: "Initial Consultation",
-        body: "We review your situation, goals, and any immediate safety or financial concerns.",
-      },
-      {
-        title: "Filing & Response",
-        body: "We prepare and file the necessary petitions, or respond to a filing against you.",
-      },
-      {
-        title: "Discovery & Negotiation",
-        body: "We gather financial and custody information and pursue a fair settlement where possible.",
-      },
-      {
-        title: "Resolution",
-        body: "Through settlement or trial, we bring the matter to a conclusion and help you plan for what's next.",
-      },
+      { title: "Initial Meeting", body: "We discuss your family, assets and wishes, in person or by video." },
+      { title: "Draft Will", body: "We send a draft with a plain-English summary of how it works." },
+      { title: "Signing", body: "We supervise signing with two independent witnesses so the will is valid." },
+      { title: "Storage & Review", body: "We store the original securely and suggest a review every few years." },
     ],
     faqs: [
-      {
-        q: "How is child custody decided?",
-        a: "Courts weigh the best interests of the child, including stability, each parent's involvement, and the child's own preferences depending on age. We help you build a parenting plan that reflects your family's real schedule, not a generic template.",
-      },
-      {
-        q: "Do I have to go to court to get divorced?",
-        a: "Not always. Many cases resolve through negotiation or mediation. We prepare every case as if it will be tried, which tends to produce better settlements.",
-      },
-      {
-        q: "How long does a divorce take?",
-        a: "Uncontested matters can resolve in a few months; contested matters involving custody or complex assets can take a year or more. We'll give you a realistic estimate after an initial review.",
-      },
-    ],
-  },
-  {
-    slug: "business-corporate",
-    name: "Business & Corporate",
-    code: "BC",
-    blurb:
-      "Formation, contracts, and governance support for growing companies.",
-    longDescription:
-      "From the first LLC filing to a company's eventual sale, we act as outside counsel for businesses that need a lawyer who understands both the legal risk and the commercial reality. We've represented first-time founders raising a seed round and multi-generational family businesses navigating succession, often in the same week.",
-    whyUs: [
-      "Founder-friendly deal terms without slowing down your raise",
-      "Flat-fee options for routine contract work, not just hourly billing",
-      "A single point of contact who already knows your business",
-    ],
-    services: [
-      "Entity formation & structuring",
-      "Contract drafting & negotiation",
-      "Founder & shareholder agreements",
-      "Mergers & acquisitions",
-      "Employment agreements & policies",
-      "General outside counsel",
-    ],
-    processSteps: [
-      {
-        title: "Discovery Call",
-        body: "We learn about your business, structure, and immediate legal needs.",
-      },
-      {
-        title: "Documentation",
-        body: "We draft or review the governing documents and contracts specific to your situation.",
-      },
-      {
-        title: "Negotiation",
-        body: "We represent your interests directly with counterparties, investors, or partners.",
-      },
-      {
-        title: "Ongoing Support",
-        body: "Many clients keep us on for periodic review as the business grows.",
-      },
-    ],
-    faqs: [
-      {
-        q: "What entity type should I form?",
-        a: "It depends on your liability exposure, tax situation, and plans for investment. We walk founders through LLC, S-corp, and C-corp tradeoffs before you file anything.",
-      },
-      {
-        q: "Can you serve as our ongoing outside counsel?",
-        a: "Yes, many of our business clients retain us for recurring contract review, employment questions, and general legal checkups rather than calling only when there's a crisis.",
-      },
-      {
-        q: "Do you handle disputes between business partners?",
-        a: "We do, starting with your governing documents. Most partner disputes are resolved faster and cheaper by enforcing what's already in your operating agreement than by going straight to litigation.",
-      },
-    ],
-  },
-  {
-    slug: "personal-injury",
-    name: "Personal Injury",
-    code: "PI",
-    blurb:
-      "Representation for clients injured by the negligence of others.",
-    longDescription:
-      "Insurance companies have teams of adjusters working to minimize what they pay. We built our personal injury practice to counter that: investigating thoroughly, documenting damages completely, and preparing every case as if it's going to trial, because that posture is exactly what gets fair settlements.",
-    whyUs: [
-      "No fee unless we recover for you",
-      "We handle all insurer communication so you can focus on recovery",
-      "Trial-ready preparation on every case, not just the ones that go to court",
-    ],
-    services: [
-      "Auto & motorcycle accidents",
-      "Slip and fall claims",
-      "Product liability",
-      "Wrongful death",
-      "Insurance claim disputes",
-      "Medical malpractice referrals",
-    ],
-    processSteps: [
-      {
-        title: "Free Case Review",
-        body: "We assess what happened, your injuries, and whether you have a viable claim.",
-      },
-      {
-        title: "Investigation",
-        body: "We gather records, accident reports, and speak with witnesses.",
-      },
-      {
-        title: "Negotiation with Insurers",
-        body: "We handle all communication with insurance companies on your behalf.",
-      },
-      {
-        title: "Trial if Necessary",
-        body: "If a fair settlement isn't offered, we're prepared to take your case to trial.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Do I pay anything up front?",
-        a: "No. Personal injury matters are handled on contingency, and we only get paid if you recover.",
-      },
-      {
-        q: "How much is my case worth?",
-        a: "It depends on medical costs, lost income, and the severity of your injury. We give a realistic range after reviewing your records, not before.",
-      },
-      {
-        q: "How long do I have to file a claim?",
-        a: "Statutes of limitations vary by state and claim type, and some deadlines are much shorter than people expect. Contact us as soon as possible after an injury.",
-      },
-    ],
-  },
-  {
-    slug: "real-estate",
-    name: "Real Estate",
-    code: "RE",
-    blurb:
-      "Residential and commercial transactions, leases, and disputes.",
-    longDescription:
-      "Real estate deals fail at the details: a missed easement, an unreviewed lease clause, a title issue surfacing days before closing. We review, draft, and negotiate the paperwork so those details get caught before they become expensive, on both residential and commercial transactions.",
-    whyUs: [
-      "A streak of on-time closings even when title issues surface late",
-      "Experience on both sides of landlord-tenant disputes",
-      "Direct coordination with your lender and title company, not just document review",
-    ],
-    services: [
-      "Residential purchase & sale agreements",
-      "Commercial leasing",
-      "Title review & disputes",
-      "Landlord-tenant matters",
-      "Zoning & land use",
-      "1031 exchanges",
-    ],
-    processSteps: [
-      {
-        title: "Contract Review",
-        body: "We review or draft your purchase agreement or lease before you sign.",
-      },
-      {
-        title: "Due Diligence",
-        body: "We examine title, survey, and any zoning or use restrictions.",
-      },
-      {
-        title: "Closing",
-        body: "We coordinate with the other side and title company to get to a clean closing.",
-      },
-      {
-        title: "Post-Closing Support",
-        body: "We're available if disputes or issues surface after the transaction.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Do I need a lawyer to buy a house?",
-        a: "It's not always required, but a review of your purchase agreement and title before closing catches problems most buyers never see until it's too late.",
-      },
-      {
-        q: "Can you help with a lease dispute?",
-        a: "Yes, on both the landlord and tenant side, commercial and residential.",
-      },
-      {
-        q: "What's involved in a title dispute?",
-        a: "We investigate the chain of title, resolve competing claims, and can pursue or defend a quiet title action if necessary.",
-      },
-    ],
-  },
-  {
-    slug: "estate-planning",
-    name: "Estate Planning",
-    code: "EP",
-    blurb:
-      "Wills, trusts, and probate guidance for individuals and families.",
-    longDescription:
-      "A good estate plan is written for the people left behind, not just the person signing it. We build wills, trusts, and succession plans that hold up under family pressure and actually reflect what you want, then we're there to guide your executor or trustee through probate or administration when the time comes.",
-    whyUs: [
-      "Plans built to minimize probate and estate tax exposure",
-      "Support for your executor or trustee, not just document drafting",
-      "Honest guidance on whether you need a trust or if a will is enough",
-    ],
-    services: [
-      "Wills",
-      "Revocable & irrevocable trusts",
-      "Powers of attorney & healthcare directives",
-      "Probate & trust administration",
-      "Estate tax planning",
-      "Business succession planning",
-    ],
-    processSteps: [
-      {
-        title: "Planning Session",
-        body: "We discuss your family, assets, and goals for your estate.",
-      },
-      {
-        title: "Document Drafting",
-        body: "We prepare the wills, trusts, and directives that fit your situation.",
-      },
-      {
-        title: "Execution",
-        body: "We guide you through signing everything correctly under state law.",
-      },
-      {
-        title: "Administration Support",
-        body: "When the time comes, we guide your executor or trustee through probate or trust administration.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Do I need a trust if I already have a will?",
-        a: "Not everyone does. It depends on your assets, family situation, and whether you want to avoid probate. We'll tell you honestly if a will alone is enough.",
-      },
       {
         q: "What happens if I die without a will?",
-        a: "State intestacy law decides who inherits, which rarely matches what people actually want. We can usually put a basic plan in place quickly.",
+        a: "Your estate passes under the intestacy rules, which follow a fixed order of relatives. Unmarried partners and stepchildren receive nothing under those rules, which is a common reason to make a will.",
       },
       {
-        q: "How often should I update my estate plan?",
-        a: "After any major life event (marriage, divorce, a new child, a significant change in assets) and at minimum every few years.",
-      },
-    ],
-  },
-  {
-    slug: "criminal-defense",
-    name: "Criminal Defense",
-    code: "CD",
-    blurb: "Defense counsel across misdemeanor and felony matters.",
-    longDescription:
-      "The period between an arrest and a resolution is when the most damage can be done or avoided. We move quickly to protect your rights, challenge the state's evidence where it's vulnerable, and negotiate from a position informed by genuine trial preparation, because prosecutors offer better deals to defendants who are actually prepared to go to trial.",
-    whyUs: [
-      "Immediate response when you've been arrested or charged",
-      "A track record of dismissals and acquittals, not just plea deals",
-      "We prepare every case for trial, which changes the negotiation from day one",
-    ],
-    services: [
-      "Misdemeanor & felony defense",
-      "DUI/DWI defense",
-      "Drug charges",
-      "Expungement & record sealing",
-      "Juvenile defense",
-      "Post-conviction relief",
-    ],
-    processSteps: [
-      {
-        title: "Immediate Consultation",
-        body: "We move quickly to understand the charges and any deadlines.",
+        q: "Does getting married affect my will?",
+        a: "In England and Wales, marriage or civil partnership normally revokes an existing will unless it was made in contemplation of that marriage. It is worth reviewing your will before the wedding.",
       },
       {
-        title: "Investigation",
-        body: "We review evidence, police conduct, and any procedural issues.",
-      },
-      {
-        title: "Negotiation",
-        body: "We pursue reduced charges or dismissal where the facts support it.",
-      },
-      {
-        title: "Trial",
-        body: "If a fair resolution isn't offered, we're prepared to defend you at trial.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Should I talk to the police without a lawyer?",
-        a: "Generally, no. Politely decline to answer questions beyond identifying yourself and ask for an attorney immediately.",
-      },
-      {
-        q: "Can my record be expunged?",
-        a: "It depends on the charge, the outcome, and your state's rules. We can review your record and tell you what's realistically possible.",
-      },
-      {
-        q: "What happens at an arraignment?",
-        a: "You'll hear the charges against you and enter a plea. We prepare you for exactly what to expect beforehand so there are no surprises.",
+        q: "Can I leave someone out of my will?",
+        a: "You can, but some family members and dependants may be able to bring a claim under the Inheritance (Provision for Family and Dependants) Act 1975. We can help you record your reasons to reduce that risk.",
       },
     ],
   },
   {
-    slug: "employment-law",
-    name: "Employment Law",
-    code: "EL",
-    blurb:
-      "Workplace rights and employer compliance, from wrongful termination to policy drafting.",
+    slug: "probate-estates",
+    name: "Probate & Estate Administration",
+    code: "PR",
+    blurb: "Calm, organised support for executors and families after a death.",
     longDescription:
-      "Workplace disputes are rarely simple. They involve ongoing relationships, sensitive documentation, and often a real power imbalance between employee and employer. We represent individuals navigating termination, discrimination, and severance negotiations, as well as employers who want policies that hold up before a dispute ever starts.",
+      "Administering an estate means valuing assets, dealing with HMRC, applying for the grant and distributing to beneficiaries, often while grieving. We can handle the whole process or support executors with the parts they would rather not take on, and we keep everyone informed through the client portal.",
     whyUs: [
-      "We negotiate severance as a starting point, not a final offer",
-      "Experience on both the employee and employer side of a dispute",
-      "Fast response when a termination or notice has a filing deadline attached",
+      "Fixed-fee options for straightforward estates",
+      "One named solicitor from the first call to final accounts",
+      "Progress, documents and estate accounts visible in the client portal",
     ],
     services: [
-      "Wrongful termination claims",
-      "Workplace discrimination & harassment",
-      "Wage & hour disputes",
-      "Non-compete & non-solicit agreements",
-      "Severance negotiation",
-      "Employee handbook & policy drafting",
+      "Applying for a grant of probate or letters of administration",
+      "Inheritance tax returns and reliefs",
+      "Valuing and selling estate property",
+      "Estate accounts and distribution to beneficiaries",
+      "Estates with overseas assets",
+      "Deeds of variation",
     ],
     processSteps: [
-      {
-        title: "Initial Consultation",
-        body: "We review your employment history, the conduct at issue, and any documentation you have.",
-      },
-      {
-        title: "Investigation & Demand",
-        body: "We gather records and, where appropriate, send a demand letter to the employer or their counsel.",
-      },
-      {
-        title: "Negotiation",
-        body: "Most matters resolve through negotiated severance or settlement without litigation.",
-      },
-      {
-        title: "Litigation if Necessary",
-        body: "If a fair resolution isn't offered, we're prepared to file and litigate.",
-      },
+      { title: "First Steps", body: "We explain the executors' role, secure assets and notify banks and other institutions." },
+      { title: "Valuation & Tax", body: "We value the estate and prepare any inheritance tax account for HMRC." },
+      { title: "The Grant", body: "We apply to the Probate Registry for the grant of representation." },
+      { title: "Distribution", body: "We collect assets, pay debts and distribute the estate with full accounts." },
     ],
     faqs: [
       {
-        q: "Is my termination illegal?",
-        a: "Most employment is at-will, so termination itself often isn't illegal, but termination motivated by discrimination, retaliation, or breach of contract can be. We review the facts before giving you a straight answer.",
+        q: "How long does probate take?",
+        a: "A straightforward estate often takes nine to twelve months from start to finish. Estates with property to sell, inheritance tax to pay or overseas assets usually take longer.",
       },
       {
-        q: "Can I negotiate my severance package?",
-        a: "Yes, severance offers are usually a starting point, not a final offer. We routinely negotiate better terms, including extended pay and neutral references.",
+        q: "Is probate always needed?",
+        a: "Not always. Small estates or assets held jointly may pass without a grant. It depends on the institutions holding the assets and whether land is involved.",
       },
       {
-        q: "What should I do before signing a non-compete?",
-        a: "Have it reviewed before you sign, not after you leave. Enforceability varies significantly by state and by how narrowly the agreement is written.",
+        q: "Are executors personally liable?",
+        a: "Executors can be personally liable if they distribute too early or overlook debts or tax. Taking advice early is the best protection.",
       },
     ],
   },
   {
-    slug: "immigration-law",
-    name: "Immigration Law",
-    code: "IM",
-    blurb:
-      "Visas, green cards, and citizenship guidance for individuals, families, and employers.",
+    slug: "trusts",
+    name: "Trusts & Trustee Services",
+    code: "TR",
+    blurb: "Setting up and running trusts that protect family wealth for the long term.",
     longDescription:
-      "Immigration cases live and die on paperwork accuracy and timing. We prepare every filing to withstand scrutiny the first time, whether that's a family petition, an employment-based visa, or a defense against removal, because a single avoidable error can cost a client years.",
+      "Trusts can protect assets for children, vulnerable beneficiaries or future generations, and can play a part in tax planning. We advise on which type of trust fits your aims, prepare the trust deed, and support trustees with their ongoing duties, from registration to periodic charges.",
     whyUs: [
-      "Complete, error-checked filings that avoid unnecessary Requests for Evidence",
-      "Experience across family, employment, and removal defense matters",
-      "Realistic timelines given up front, not optimistic guesses",
+      "Clear advice on whether a trust is needed at all",
+      "Ongoing support for trustees, not just drafting the deed",
+      "Registration with HMRC's Trust Registration Service handled for you",
     ],
     services: [
-      "Family-based green cards",
-      "Employment-based visas (H-1B, L-1, O-1)",
-      "Naturalization & citizenship",
-      "Deportation & removal defense",
-      "Asylum applications",
-      "Employer compliance (I-9, E-Verify)",
+      "Discretionary trusts",
+      "Life-interest trusts",
+      "Trusts for vulnerable beneficiaries",
+      "Trust Registration Service compliance",
+      "Retirement and appointment of trustees",
+      "Winding up trusts",
     ],
     processSteps: [
-      {
-        title: "Case Assessment",
-        body: "We review your immigration history and goals to identify the right pathway.",
-      },
-      {
-        title: "Filing",
-        body: "We prepare and file petitions with complete, accurate documentation.",
-      },
-      {
-        title: "Response to Requests for Evidence",
-        body: "If the government requests more evidence, we respond quickly and thoroughly.",
-      },
-      {
-        title: "Approval & Next Steps",
-        body: "We help you plan for what comes next, from consular processing to citizenship.",
-      },
+      { title: "Objectives", body: "We discuss who the trust is for and what it should achieve." },
+      { title: "Structure", body: "We recommend the trust type and explain the tax treatment." },
+      { title: "Documentation", body: "We prepare the trust deed and a letter of wishes for the trustees." },
+      { title: "Administration", body: "We support trustees with registration, records and tax filings." },
     ],
     faqs: [
       {
-        q: "How long does a green card take?",
-        a: "It depends heavily on the category and your country of origin: some family categories take under a year, others many years due to backlogs. We give you a realistic timeline up front.",
+        q: "Do all trusts need to be registered?",
+        a: "Most express trusts must be registered on HMRC's Trust Registration Service, even if they pay no tax. Some limited exemptions apply.",
       },
       {
-        q: "Can I work while my green card is pending?",
-        a: "Often yes, with the right interim work authorization. We make sure that paperwork is filed alongside your primary petition.",
+        q: "Can I be a trustee and a beneficiary?",
+        a: "Yes, in many cases. It is usually sensible to have at least one other trustee who is not a beneficiary.",
       },
       {
-        q: "What happens if I receive a Notice to Appear?",
-        a: "Contact us immediately. Deadlines in removal proceedings are strict, and missing one can result in an in-absentia deportation order.",
+        q: "Will a trust avoid inheritance tax?",
+        a: "Not automatically. Some trusts have their own tax charges. We explain the tax position before you decide.",
       },
     ],
   },
   {
-    slug: "bankruptcy",
-    name: "Bankruptcy",
-    code: "BK",
-    blurb: "Debt relief and reorganization for individuals and small businesses.",
+    slug: "inheritance-tax",
+    name: "Inheritance Tax Planning",
+    code: "IT",
+    blurb: "Lawful planning that reduces the inheritance tax your family will face.",
     longDescription:
-      "Bankruptcy isn't the end of a financial story. For most clients, it's the tool that stops the bleeding and lets them rebuild. We help individuals and small businesses choose the right chapter, protect what exemptions allow, and come out the other side with a plan instead of a stack of collection calls.",
+      "Inheritance tax is charged at 40% on estates above the available nil-rate bands. With planning, many families can reduce that bill through lifetime gifts, use of reliefs and careful will drafting. We work alongside your accountant or financial adviser where needed.",
     whyUs: [
-      "Clear guidance on what you'll keep before you ever file",
-      "Small business reorganization experience, not just consumer filings",
-      "The automatic stay is filed fast enough to actually stop a pending action",
+      "Planning built around your income needs, not just tax savings",
+      "Coordinated advice with your accountant and financial adviser",
+      "Regular reviews as rules and family circumstances change",
     ],
     services: [
-      "Chapter 7 liquidation",
-      "Chapter 13 repayment plans",
-      "Small business Chapter 11",
-      "Creditor negotiation",
-      "Foreclosure defense",
-      "Student loan discharge review",
+      "Estate valuations and IHT forecasts",
+      "Use of the nil-rate and residence nil-rate bands",
+      "Lifetime gifting strategies",
+      "Business and agricultural property relief",
+      "Gifts to charity",
+      "Pension and life-policy planning with advisers",
     ],
     processSteps: [
-      {
-        title: "Financial Review",
-        body: "We review your debts, assets, and income to identify the right chapter and strategy.",
-      },
-      {
-        title: "Filing",
-        body: "We prepare and file your petition and schedules, triggering the automatic stay that halts collection.",
-      },
-      {
-        title: "Meeting of Creditors",
-        body: "We prepare you for and attend the required creditor meeting.",
-      },
-      {
-        title: "Discharge or Plan Confirmation",
-        body: "We carry the case through to discharge or a confirmed repayment plan.",
-      },
+      { title: "Estate Review", body: "We estimate your current inheritance tax exposure." },
+      { title: "Options", body: "We set out the planning options with their benefits and risks." },
+      { title: "Implementation", body: "We put the agreed plan in place, including wills and trusts." },
+      { title: "Review", body: "We revisit the plan as your circumstances and the rules change." },
     ],
     faqs: [
       {
-        q: "Will I lose my house or car?",
-        a: "Not necessarily. Exemptions protect a meaningful amount of equity, and Chapter 13 in particular is often used specifically to catch up on a mortgage while keeping the home.",
+        q: "How much can I leave before inheritance tax applies?",
+        a: "Each person has a nil-rate band of £325,000, and a residence nil-rate band of up to £175,000 may apply when a home passes to direct descendants. Unused allowances can often pass to a surviving spouse.",
       },
       {
-        q: "How long does bankruptcy stay on my credit report?",
-        a: "Chapter 7 stays up to 10 years, Chapter 13 up to 7, but many clients see their score begin recovering within a couple of years as they rebuild.",
+        q: "What is the seven-year rule?",
+        a: "Most lifetime gifts fall outside your estate if you survive seven years after making them. Gifts made within seven years may be taxed, with tapering in some cases.",
       },
       {
-        q: "Can bankruptcy stop a foreclosure?",
-        a: "Filing triggers an automatic stay that halts a foreclosure sale immediately, giving you time to catch up or negotiate.",
+        q: "Can I give my home to my children?",
+        a: "You can, but if you keep living there without paying a market rent the gift may still be taxed as part of your estate. Take advice before transferring property.",
       },
     ],
   },
   {
-    slug: "intellectual-property",
-    name: "Intellectual Property",
-    code: "IP",
-    blurb:
-      "Trademark, copyright, and trade secret protection for growing businesses.",
+    slug: "lasting-powers-of-attorney",
+    name: "Lasting Powers of Attorney",
+    code: "LP",
+    blurb: "Choose who makes decisions for you if you cannot make them yourself.",
     longDescription:
-      "Your brand and your ideas are assets, and like any asset, they need to be protected before someone else claims them. We handle trademark and copyright registration, licensing, and enforcement for businesses that are growing fast enough that their IP is starting to matter.",
+      "A lasting power of attorney lets you choose trusted people to handle your finances or make health and care decisions if you lose mental capacity. Without one, your family may need to apply to the Court of Protection, which is slower and more expensive. We prepare LPAs, act as certificate provider and register them for you.",
     whyUs: [
-      "Clearance searches before you file or launch, not after a conflict surfaces",
-      "Enforcement that starts with a cease-and-desist, not an expensive lawsuit",
-      "IP due diligence support when you're raising money or getting acquired",
+      "Advice on choosing attorneys and setting sensible instructions",
+      "Independent certificate provider to protect against pressure",
+      "Registration with the Office of the Public Guardian handled for you",
     ],
     services: [
-      "Trademark search & registration",
-      "Copyright registration",
-      "Trade secret protection",
-      "Licensing agreements",
-      "Cease-and-desist enforcement",
-      "IP due diligence for transactions",
+      "Property and financial affairs LPAs",
+      "Health and welfare LPAs",
+      "Business LPAs for company owners",
+      "Advice to attorneys on their duties",
+      "Registering existing enduring powers of attorney",
+      "Revoking or replacing an LPA",
     ],
     processSteps: [
-      {
-        title: "Clearance Search",
-        body: "We search existing marks and filings to assess your risk before you file or launch.",
-      },
-      {
-        title: "Filing",
-        body: "We prepare and file your application with the appropriate office.",
-      },
-      {
-        title: "Office Actions",
-        body: "We respond to any examiner objections to keep your application moving.",
-      },
-      {
-        title: "Registration & Enforcement",
-        body: "Once registered, we help you monitor and enforce your rights against infringers.",
-      },
+      { title: "Planning Meeting", body: "We discuss who to appoint and how they should act." },
+      { title: "Preparation", body: "We prepare the LPA forms and any preferences or instructions." },
+      { title: "Signing", body: "We guide you, your attorneys and witnesses through signing in the right order." },
+      { title: "Registration", body: "We register the LPA with the Office of the Public Guardian." },
     ],
     faqs: [
       {
-        q: "Do I need a trademark if I already have an LLC?",
-        a: "Yes, forming an LLC protects your business name in your state for entity purposes only; it does not stop someone else from using a similar brand name elsewhere or registering it federally.",
+        q: "When should I make an LPA?",
+        a: "While you have mental capacity. An LPA cannot be made once capacity is lost, so it is best done as part of routine planning.",
       },
       {
-        q: "How long does trademark registration take?",
-        a: "Typically eight months to over a year depending on the trademark office's backlog and whether the examiner raises objections.",
+        q: "Can my attorneys act straight away?",
+        a: "A property and financial affairs LPA can be used once registered, with your permission, even while you have capacity. A health and welfare LPA can only be used when you lack capacity.",
       },
       {
-        q: "What's the difference between a copyright and a trademark?",
-        a: "Copyright protects creative works like writing, code, and designs; trademark protects brand identifiers like names and logos. Many businesses need both.",
+        q: "How long does registration take?",
+        a: "Registration with the Office of the Public Guardian usually takes several weeks, so it is wise not to leave it until it is urgently needed.",
+      },
+    ],
+  },
+  {
+    slug: "court-of-protection",
+    name: "Court of Protection & Deputyships",
+    code: "CP",
+    blurb: "Support for families when a loved one can no longer manage their affairs.",
+    longDescription:
+      "When someone has lost capacity without an LPA in place, a deputy may need to be appointed by the Court of Protection to manage their finances or welfare. We prepare deputyship applications, advise deputies on their duties, and handle related applications such as statutory wills and gifts.",
+    whyUs: [
+      "Applications prepared carefully to avoid delays at court",
+      "Practical support for lay deputies, including annual reports",
+      "Sensitive handling of family disagreements",
+    ],
+    services: [
+      "Property and affairs deputyship applications",
+      "Health and welfare deputyship applications",
+      "Statutory will applications",
+      "Applications to approve gifts",
+      "Deputy annual reports and supervision",
+      "Objections to applications",
+    ],
+    processSteps: [
+      { title: "Assessment", body: "We review capacity evidence and confirm a deputyship is needed." },
+      { title: "Application", body: "We prepare and file the application and notify relevant people." },
+      { title: "Court Order", body: "We deal with any queries until the court makes its order." },
+      { title: "Ongoing Support", body: "We help the deputy with bonds, records and annual reporting." },
+    ],
+    faqs: [
+      {
+        q: "What is a deputy?",
+        a: "A deputy is someone appointed by the Court of Protection to make decisions for a person who lacks capacity and has no valid LPA covering those decisions.",
+      },
+      {
+        q: "How long does a deputyship application take?",
+        a: "Timescales vary with the court's workload, but several months is common. Urgent applications can be made where there is an immediate need.",
+      },
+      {
+        q: "Is a deputy supervised?",
+        a: "Yes. Deputies are supervised by the Office of the Public Guardian and usually file an annual report.",
+      },
+    ],
+  },
+  {
+    slug: "contentious-probate",
+    name: "Contentious Probate & Trust Disputes",
+    code: "CT",
+    blurb: "Resolving disputes over wills, estates and trusts, wherever possible without court.",
+    longDescription:
+      "Disputes over a will or estate can divide families. We act for beneficiaries, executors and those who feel they have been left out, looking first for a negotiated or mediated settlement and preparing properly for court where that is not possible.",
+    whyUs: [
+      "Early, honest assessment of the strength of a claim",
+      "Mediation-first approach that keeps costs and conflict down",
+      "Close attention to strict deadlines, including the six-month time limit for Inheritance Act claims",
+    ],
+    services: [
+      "Challenges to the validity of a will",
+      "Inheritance Act 1975 claims",
+      "Disputes between executors or trustees",
+      "Removal of executors and trustees",
+      "Caveats and warnings",
+      "Mediation and settlement",
+    ],
+    processSteps: [
+      { title: "Case Review", body: "We review the will, the estate and the evidence available." },
+      { title: "Preserve Position", body: "We take urgent steps such as entering a caveat where appropriate." },
+      { title: "Negotiation", body: "We pursue settlement through correspondence or mediation." },
+      { title: "Proceedings", body: "If settlement fails, we prepare and run the case at court." },
+    ],
+    faqs: [
+      {
+        q: "On what grounds can a will be challenged?",
+        a: "Common grounds include lack of mental capacity, undue influence, lack of knowledge and approval, invalid signing, and fraud.",
+      },
+      {
+        q: "Is there a time limit?",
+        a: "Claims under the Inheritance Act 1975 must normally be issued within six months of the grant of representation. Other claims have different limits, so take advice promptly.",
+      },
+      {
+        q: "Will I have to go to court?",
+        a: "Most disputes settle before trial, often at mediation. Preparing thoroughly for court is usually what produces a good settlement.",
       },
     ],
   },

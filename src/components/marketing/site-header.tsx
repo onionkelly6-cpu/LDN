@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/about", label: "About" },
-  { href: "/attorneys", label: "Attorneys" },
-  { href: "/case-results", label: "Case Results" },
-  { href: "/locations", label: "Locations" },
+  { href: "/solicitors", label: "Solicitors" },
+  { href: "/case-results", label: "Outcomes" },
+  { href: "/locations", label: "Location" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -24,7 +24,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md">
       <div className="hidden border-b border-border lg:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 font-mono text-xs tracking-wide text-muted-foreground">
-          <span>Legal counsel for families and founders — Chicago, IL</span>
+          <span>Private client solicitors — London, UK · Fictional sample firm</span>
           <div className="flex items-center gap-6">
             <Link href="/login" className="hover:text-foreground">
               Client Portal Login
@@ -63,7 +63,7 @@ export function SiteHeader() {
           <div className="hidden lg:block">
             <Link href="/contact" transitionTypes={["nav-forward"]}>
               <Button variant="primary" className="rounded-none">
-                Request a Consultation
+                Make an Enquiry
               </Button>
             </Link>
           </div>
@@ -118,7 +118,7 @@ export function SiteHeader() {
             </Link>
             <Link href="/contact" onClick={() => setMenuOpen(false)} transitionTypes={["nav-forward"]}>
               <Button variant="primary" className="w-full rounded-none">
-                Request a Consultation
+                Make an Enquiry
               </Button>
             </Link>
           </div>
