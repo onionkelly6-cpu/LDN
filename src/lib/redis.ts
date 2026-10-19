@@ -22,7 +22,16 @@ const client = new Redis({ url: redisUrl, token: redisToken });
 // other's records. Prefixing every key here keeps this app's data fully
 // apportioned within the shared instance without needing a second database
 // or touching the other project at all.
-const KEY_PREFIX = "crestbridge:";
+export const KEY_PREFIX = "crestbridge:";
+
+/**
+ * The raw, un-namespaced client. Only for libraries that manage their own
+ * key prefix and send scripts rather than keys as the first argument
+ * (e.g. @upstash/ratelimit's EVAL/EVALSHA calls), which the prefixing
+ * Proxy below would corrupt. Always pass such libraries a `KEY_PREFIX`-based
+ * prefix so their keys stay inside this app's partition.
+ */
+export const unprefixedRedis = client;
 
 function withPrefix(key: string): string {
 	return key.startsWith(KEY_PREFIX) ? key : `${KEY_PREFIX}${key}`;
