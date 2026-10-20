@@ -10,7 +10,7 @@ import { submitLeadAction } from "./actions";
 export const metadata = {
   title: "Make an Enquiry",
   description:
-    "Enquiry form for Crestbridge, a fictional private client firm on this sample website. Submissions appear in the demo firm workspace.",
+    "Enquiry form for LDN Legal Associates, a fictional private client firm on this sample website. Submissions appear in the demo firm workspace.",
 };
 
 type Props = {

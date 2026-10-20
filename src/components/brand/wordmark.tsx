@@ -17,7 +17,9 @@ type WordmarkProps = {
 };
 
 /**
- * Crest-and-bridge mark on a brass-edged tile, with a two-line wordmark.
+ * Shield-and-bridge mark on a brass-edged tile, with a two-line wordmark.
+ * The mark is carried over from this site's previous "Crestbridge" brand
+ * (see crest-paths.ts) and not yet redesigned for "LDN Legal Associates".
  * Shares its path data with src/app/icon.tsx and opengraph-image.tsx so the
  * favicon, share card and in-page logo stay the same design.
  */

@@ -28,7 +28,7 @@ const displayFont = Fraunces({
 });
 
 const DEFAULT_DESCRIPTION =
-  "Sample website for Crestbridge, a fictional London private client firm: wills, probate, trusts and estate planning, with a secure client portal. Not a real solicitors' practice.";
+  "Sample website for LDN Legal Associates, a fictional London private client firm: wills, probate, trusts and estate planning, with a secure client portal. Not a real solicitors' practice.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

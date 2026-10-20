@@ -8,7 +8,7 @@ import { practiceAreas } from "@/lib/content/practice-areas";
 export const metadata = {
   title: "Our Solicitors",
   description:
-    "The fictional private client team at Crestbridge, a sample website: wills, probate, trusts, inheritance tax and later-life planning.",
+    "The fictional private client team at LDN Legal Associates, a sample website: wills, probate, trusts, inheritance tax and later-life planning.",
 };
 
 export default function SolicitorsPage() {

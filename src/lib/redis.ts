@@ -22,7 +22,7 @@ const client = new Redis({ url: redisUrl, token: redisToken });
 // other's records. Prefixing every key here keeps this app's data fully
 // apportioned within the shared instance without needing a second database
 // or touching the other project at all.
-export const KEY_PREFIX = "crestbridge:";
+export const KEY_PREFIX = "ldn-legal:";
 
 /**
  * The raw, un-namespaced client. Only for libraries that manage their own

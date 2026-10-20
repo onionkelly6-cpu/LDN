@@ -7,7 +7,7 @@ import { caseResultStats } from "@/lib/content/case-results";
 export const metadata = {
   title: "Illustrative Outcomes",
   description:
-    "Illustrative private client matters for Crestbridge, a fictional firm on this sample website. None of these matters took place.",
+    "Illustrative private client matters for LDN Legal Associates, a fictional firm on this sample website. None of these matters took place.",
 };
 
 export default function CaseResultsPage() {

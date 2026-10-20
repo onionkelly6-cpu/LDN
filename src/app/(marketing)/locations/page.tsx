@@ -8,7 +8,7 @@ import { offices } from "@/lib/content/offices";
 export const metadata = {
   title: "Location",
   description:
-    "Where Crestbridge, a fictional London private client firm on this sample website, is based.",
+    "Where LDN Legal Associates, a fictional London private client firm on this sample website, is based.",
 };
 
 const officeImages = [

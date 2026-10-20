@@ -3,9 +3,9 @@
 export const generalFaqs = [
   {
     id: "sample-site",
-    question: "Is Crestbridge a real firm?",
+    question: "Is LDN Legal Associates a real firm?",
     answer:
-      "No. This is a sample website for a fictional firm. Crestbridge Private Client Solicitors is not a real solicitors' practice and is not authorised or regulated by the Solicitors Regulation Authority.",
+      "No. This is a sample website for a fictional firm. LDN Legal Associates is not a real solicitors' practice and is not authorised or regulated by the Solicitors Regulation Authority.",
   },
   {
     id: "areas-served",

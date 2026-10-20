@@ -39,7 +39,7 @@ export default async function DashboardPage() {
     <div>
       <h1 className="font-display text-3xl">Your Matters</h1>
       <p className="mt-2 text-muted-foreground">
-        Every matter Crestbridge is handling on your behalf, with its
+        Every matter LDN Legal Associates is handling on your behalf, with its
         current stage and next key date.
       </p>
 

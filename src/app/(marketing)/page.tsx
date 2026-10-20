@@ -73,7 +73,7 @@ export default function HomePage() {
             Your wishes,<br />carefully carried forward.
           </h1>
           <p className="mt-8 max-w-xl text-lg text-[#f5f2ea]/70">
-            Crestbridge advises families on wills, trusts, probate and later-life
+            LDN Legal Associates advises families on wills, trusts, probate and later-life
             planning, with clear advice, honest timescales and a secure portal
             that keeps you informed at every step.
           </p>

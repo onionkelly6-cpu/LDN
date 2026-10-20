@@ -1,4 +1,4 @@
-# Crestbridge Private Client Solicitors Website — What It Does (Plain-English Guide)
+# LDN Legal Associates Website — What It Does (Plain-English Guide)
 
 This explains what the website does, in everyday language. No coding
 knowledge needed.

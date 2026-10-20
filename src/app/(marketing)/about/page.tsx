@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 export const metadata = {
   title: "About",
   description:
-    "About Crestbridge, a fictional London private client firm on this sample website: wills, probate, trusts and later-life planning, with a client portal that always shows where your matter stands.",
+    "About LDN Legal Associates, a fictional London private client firm on this sample website: wills, probate, trusts and later-life planning, with a client portal that always shows where your matter stands.",
 };
 
 const stats = [
@@ -55,10 +55,10 @@ export default function AboutPage() {
             Fictional firm — London
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">
-            About Crestbridge
+            About LDN Legal Associates
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
-            Crestbridge is a fictional London private client firm, created for
+            LDN Legal Associates is a fictional London private client firm, created for
             this sample website. It is presented as a practice built on a
             simple idea: families planning ahead, or dealing with a loss,
             deserve clear advice and should always know where their matter
@@ -90,7 +90,7 @@ export default function AboutPage() {
           />
         </Reveal>
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-accent">Why Crestbridge</p>
+          <p className="font-mono text-xs uppercase tracking-widest text-accent">Why LDN Legal Associates</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl">
             Private client work, done carefully
           </h2>
