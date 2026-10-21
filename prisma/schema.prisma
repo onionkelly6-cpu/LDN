@@ -11,3 +11,128 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum UserRole {
+  client
+  attorney
+  staff
+  admin
+}
+
+enum MatterStage {
+  Instructed
+  InProgress
+  AwaitingThirdParty
+  Completed
+}
+
+enum DocumentVisibility {
+  internal
+  client
+}
+
+enum LeadStatus {
+  New
+  Contacted
+  Converted
+}
+
+// Replaces src/lib/demo-accounts.ts, src/lib/client-accounts.ts and
+// src/lib/attorney-accounts.ts: one table, one role-gated login, matching
+// how src/lib/auth.ts already treats every role through the same
+// `authorize` check.
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         UserRole
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  client            Client?    @relation("UserClient")
+  attorneyMatters   Matter[]   @relation("MatterAttorney")
+  uploadedDocuments Document[] @relation("DocumentUploader")
+
+  @@map("users")
+}
+
+// Replaces src/lib/demo-clients.ts. Not every Client has a portal login
+// (User) yet — matches the current "only client-1/Jordan Alvarez has a
+// real login" behavior.
+model Client {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  userId    String?  @unique
+  user      User?    @relation("UserClient", fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+
+  matters Matter[]
+
+  @@map("clients")
+}
+
+// Replaces src/lib/demo-matters.ts, including the per-matter version
+// counter LiveMatterUpdates polls (bumped on status change, upload, and
+// self-assignment).
+model Matter {
+  id           String      @id @default(cuid())
+  caseNumber   String      @unique
+  title        String
+  status       MatterStage
+  nextDate     DateTime?
+  practiceArea String
+  version      Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  attorneyId String?
+  attorney   User?   @relation("MatterAttorney", fields: [attorneyId], references: [id])
+  clientId   String
+  client     Client  @relation(fields: [clientId], references: [id])
+
+  documents Document[]
+  lead      Lead?
+
+  @@map("matters")
+}
+
+// Replaces src/lib/demo-documents/data.ts. `storedAs` stays nullable for
+// anything uploaded before real object storage (Milestone 6) is wired up;
+// `isPlaceholder` keeps marking those rows exactly as the demo data does.
+model Document {
+  id            String             @id @default(cuid())
+  filename      String
+  storedAs      String?
+  mimeType      String
+  visibility    DocumentVisibility
+  sizeBytes     Int
+  isPlaceholder Boolean            @default(true)
+  uploadedAt    DateTime           @default(now())
+
+  matterId   String
+  matter     Matter @relation(fields: [matterId], references: [id])
+  uploaderId String
+  uploader   User   @relation("DocumentUploader", fields: [uploaderId], references: [id])
+
+  @@map("documents")
+}
+
+// Replaces src/lib/demo-leads.ts. `convertedMatterId` becomes the Matter
+// relation created by "Convert to Matter" on /firm/leads.
+model Lead {
+  id           String     @id @default(cuid())
+  name         String
+  email        String
+  phone        String
+  practiceArea String
+  message      String
+  status       LeadStatus @default(New)
+  submittedAt  DateTime   @default(now())
+
+  convertedMatterId String? @unique
+  convertedMatter   Matter? @relation(fields: [convertedMatterId], references: [id])
+
+  @@map("leads")
+}
