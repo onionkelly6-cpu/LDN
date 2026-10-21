@@ -1,4 +1,4 @@
-// Sample content for a fictional private client firm in England and Wales.
+// Private client practice area content for England and Wales.
 // General information only, not legal advice; figures (nil-rate bands,
 // deadlines) reflect the rules at the time of writing.
 export const practiceAreas = [

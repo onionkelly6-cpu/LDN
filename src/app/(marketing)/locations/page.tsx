@@ -7,8 +7,7 @@ import { offices } from "@/lib/content/offices";
 
 export const metadata = {
   title: "Location",
-  description:
-    "Where LDN Legal Associates, a fictional London private client firm on this sample website, is based.",
+  description: "Where LDN Legal Associates, a London private client firm, is based.",
 };
 
 const officeImages = [
@@ -36,7 +35,7 @@ export default function LocationsPage() {
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">Our Location</h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
-            The fictional firm is presented as a London practice. Meetings are
+            LDN Legal Associates is a London practice. Meetings are
             by appointment, in person or by video, and portal clients can
             message their solicitor directly.
           </p>

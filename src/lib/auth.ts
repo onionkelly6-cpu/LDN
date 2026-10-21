@@ -79,17 +79,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return null;
       },
     }),
-    // Resend magic-link provider is disabled for now: Auth.js requires a
-    // database adapter for any "email" provider (to persist verification
-    // tokens), and validates that at config-load time for *every* auth
-    // request — so leaving it enabled without an adapter breaks Credentials
-    // sign-in too, not just magic links. Re-enable once the Prisma adapter
-    // exists (Milestone 2/3):
-    //
-    // Resend({
-    //   apiKey: process.env.RESEND_API_KEY,
-    //   from: process.env.EMAIL_FROM,
-    // }),
   ],
   pages: {
     signIn: "/login",

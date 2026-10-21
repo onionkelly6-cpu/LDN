@@ -5,9 +5,8 @@ import { CaseResultsExplorer } from "@/components/marketing/case-results-explore
 import { caseResultStats } from "@/lib/content/case-results";
 
 export const metadata = {
-  title: "Illustrative Outcomes",
-  description:
-    "Illustrative private client matters for LDN Legal Associates, a fictional firm on this sample website. None of these matters took place.",
+  title: "Case Outcomes",
+  description: "Private client case outcomes for LDN Legal Associates.",
 };
 
 export default function CaseResultsPage() {
@@ -30,7 +29,7 @@ export default function CaseResultsPage() {
             Example Matters
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">
-            Illustrative Outcomes
+            Case Outcomes
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
             A sample of outcomes we&apos;ve secured for clients across every

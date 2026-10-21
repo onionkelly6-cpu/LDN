@@ -9,8 +9,7 @@ import { submitLeadAction } from "./actions";
 
 export const metadata = {
   title: "Make an Enquiry",
-  description:
-    "Enquiry form for LDN Legal Associates, a fictional private client firm on this sample website. Submissions appear in the demo firm workspace.",
+  description: "Enquiry form for LDN Legal Associates, a private client firm.",
 };
 
 type Props = {
@@ -56,10 +55,6 @@ export default async function ContactPage({ searchParams }: Props) {
                 {params.error}
               </p>
             )}
-            <p className="mb-6 rounded-sm border border-warning/40 bg-warning/10 px-4 py-3 text-sm text-foreground">
-              This is a sample website for a fictional firm. Please do not
-              enter real personal or financial details.
-            </p>
             <form action={submitLeadAction} className="space-y-6" aria-describedby="intake-form-note">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium">

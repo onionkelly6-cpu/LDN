@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono, Fraunces } from "next/font/google";
 import { SplashScreen } from "@/components/motion/splash-screen";
-import { SITE_DEMO_NOTICE, SITE_NAME, SITE_URL } from "@/lib/site-config";
+import { SITE_NAME, SITE_URL } from "@/lib/site-config";
 import "./globals.css";
 
 const sansFont = IBM_Plex_Sans({
@@ -28,7 +28,7 @@ const displayFont = Fraunces({
 });
 
 const DEFAULT_DESCRIPTION =
-  "Sample website for LDN Legal Associates, a fictional London private client firm: wills, probate, trusts and estate planning, with a secure client portal. Not a real solicitors' practice.";
+  "LDN Legal Associates: a London private client firm advising on wills, probate, trusts and estate planning, with a secure client portal.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,9 +37,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
-  // Sample site for a fictional firm: keep it out of search results so it
-  // is never mistaken for a real practice.
-  robots: { index: false, follow: false },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -73,12 +70,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans">
         <SplashScreen />
-        <div
-          role="note"
-          className="bg-[#7a2e22] px-4 py-2 text-center text-xs leading-snug text-[#fbf3e6] sm:text-sm"
-        >
-          <strong className="font-semibold">Sample website:</strong> {SITE_DEMO_NOTICE}
-        </div>
         {children}
       </body>
     </html>

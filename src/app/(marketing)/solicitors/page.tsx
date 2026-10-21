@@ -8,7 +8,7 @@ import { practiceAreas } from "@/lib/content/practice-areas";
 export const metadata = {
   title: "Our Solicitors",
   description:
-    "The fictional private client team at LDN Legal Associates, a sample website: wills, probate, trusts, inheritance tax and later-life planning.",
+    "The private client team at LDN Legal Associates: wills, probate, trusts, inheritance tax and later-life planning.",
 };
 
 export default function SolicitorsPage() {
@@ -22,11 +22,6 @@ export default function SolicitorsPage() {
         Every client has a named solicitor who stays with their matter from
         the first meeting to completion.
       </p>
-      <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
-        These are fictional profiles created for a sample website. They do
-        not describe real people.
-      </p>
-
       <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {attorneys.map((solicitor, i) => (
           <Reveal key={solicitor.slug} delay={(i % 3) * 80}>

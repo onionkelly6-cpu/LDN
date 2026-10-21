@@ -2,22 +2,16 @@
 // FAQs live alongside each area in practice-areas.ts.
 export const generalFaqs = [
   {
-    id: "sample-site",
-    question: "Is LDN Legal Associates a real firm?",
-    answer:
-      "No. This is a sample website for a fictional firm. LDN Legal Associates is not a real solicitors' practice and is not authorised or regulated by the Solicitors Regulation Authority.",
-  },
-  {
     id: "areas-served",
-    question: "Where would the firm be based?",
+    question: "Where is the firm based?",
     answer:
-      "The fictional firm is presented as a London practice advising clients across England and Wales.",
+      "LDN Legal Associates is a London practice advising clients across England and Wales.",
   },
   {
     id: "consultation",
     question: "How does the enquiry form work?",
     answer:
-      "Enquiries submitted through the contact form appear in the firm workspace as new leads, where staff can review them and convert them into matters. It demonstrates the intake workflow only.",
+      "Enquiries submitted through the contact form go straight to our team as new leads, where we review them and get in touch to arrange next steps.",
   },
   {
     id: "billing",
@@ -29,7 +23,7 @@ export const generalFaqs = [
     id: "portal",
     question: "What is the client portal?",
     answer:
-      "The portal shows each client their matter's progress, shared documents and a message thread with their solicitor. In this sample site it uses demo accounts and demo data.",
+      "The portal shows each client their matter's progress, shared documents and a message thread with their solicitor.",
   },
   {
     id: "timeline",
@@ -47,6 +41,6 @@ export const generalFaqs = [
     id: "virtual-consultations",
     question: "Are meetings available by video?",
     answer:
-      "The sample firm is presented as offering meetings in person or by video, with signing arranged in person where the law requires it.",
+      "Yes, meetings are available in person or by video, with signing arranged in person where the law requires it.",
   },
 ] as const;

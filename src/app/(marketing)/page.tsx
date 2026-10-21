@@ -15,7 +15,6 @@ const stats = [
   { label: "Private client practice areas", value: `${practiceAreas.length}` },
   { label: "Based in", value: "London" },
   { label: "Client portal access", value: "24/7" },
-  { label: "Status", value: "Sample site" },
 ];
 
 const portalSteps = [
@@ -35,7 +34,7 @@ const portalSteps = [
 
 const learnMore = [
   { href: "/about", title: "About the Firm", body: "Our story, our values, and what clients say." },
-  { href: "/case-results", title: "Illustrative Outcomes", body: "Example matters showing how the firm would work." },
+  { href: "/case-results", title: "Case Outcomes", body: "See the outcomes we've achieved for clients." },
   { href: "/faq", title: "FAQ", body: "Answers to the questions we hear most often." },
   { href: "/locations", title: "Location", body: "Where the firm is based and how meetings work." },
 ];
@@ -90,8 +89,8 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-[#f5f2ea]/15 pt-8 text-xs tracking-wide text-[#f5f2ea]/50 uppercase">
-            <span>Fictional sample firm</span>
-            <span className="font-mono">Not regulated by the SRA</span>
+            <span>Private Client Law</span>
+            <span className="font-mono">London, England &amp; Wales</span>
           </div>
         </div>
       </section>
@@ -161,7 +160,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-accent">02 — Example Matters</p>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Illustrative Outcomes</h2>
+                <h2 className="mt-3 font-display text-3xl sm:text-4xl">Case Outcomes</h2>
               </div>
               <Link
                 href="/case-results"
@@ -183,7 +182,7 @@ export default function HomePage() {
             ))}
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Illustrative examples for a fictional firm. These matters did not take place.
+            Prior results do not guarantee a similar outcome in your matter.
           </p>
         </div>
       </section>

@@ -52,7 +52,7 @@ export default function OpengraphImage() {
           {SITE_NAME}
         </div>
         <div style={{ display: "flex", fontSize: 26, color: "#6b6255", marginTop: 16 }}>
-          Sample website · Fictional firm · Not a real solicitors&apos; practice
+          Wills · Probate · Trusts · Private Client Law
         </div>
       </div>
     ),

@@ -1,6 +1,6 @@
 ﻿export const metadata = {
   title: "Terms of Use",
-  description: "Terms governing use of this sample website for LDN Legal Associates, a fictional firm.",
+  description: "Terms governing use of this website for LDN Legal Associates.",
 };
 
 export default function TermsPage() {

@@ -24,7 +24,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md">
       <div className="hidden border-b border-border lg:block">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-2 font-mono text-xs tracking-wide text-muted-foreground">
-          <span>Private client solicitors — London, UK · Fictional sample firm</span>
+          <span>Private client solicitors — London, UK</span>
           <div className="flex items-center gap-6">
             <Link href="/login" className="hover:text-foreground">
               Client Portal Login

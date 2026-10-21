@@ -6,7 +6,7 @@ import { jsonLd } from "@/lib/structured-data";
 export const metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Frequently asked questions about LDN Legal Associates, a fictional private client firm on this sample website, and its client portal.",
+    "Frequently asked questions about LDN Legal Associates, a private client firm, and its client portal.",
 };
 
 const faqPageSchema = {

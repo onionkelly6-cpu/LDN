@@ -1,5 +1,4 @@
-// Fictional firm: the location is given at city level only, with no
-// street address, phone number or email.
+// TBD: street address, phone number and email to be added once confirmed.
 export const offices = [
   {
     name: "London Office",

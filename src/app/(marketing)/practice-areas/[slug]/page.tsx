@@ -156,7 +156,7 @@ export default async function PracticeAreaPage({ params }: Props) {
         <section className="border-t border-border bg-card">
           <div className="mx-auto max-w-4xl px-6 py-16">
             <h2 className="font-display text-2xl">
-              Illustrative {area.name} Matters
+              {area.name} Case Outcomes
             </h2>
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {relatedResults.map((result, i) => (
@@ -177,7 +177,7 @@ export default async function PracticeAreaPage({ params }: Props) {
               href="/case-results"
               className="mt-6 inline-block text-sm text-accent hover:underline"
             >
-              See all illustrative outcomes
+              See all case outcomes
             </Link>
           </div>
         </section>

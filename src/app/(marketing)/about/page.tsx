@@ -6,14 +6,13 @@ import { Reveal } from "@/components/motion/reveal";
 export const metadata = {
   title: "About",
   description:
-    "About LDN Legal Associates, a fictional London private client firm on this sample website: wills, probate, trusts and later-life planning, with a client portal that always shows where your matter stands.",
+    "About LDN Legal Associates, a London private client firm: wills, probate, trusts and later-life planning, with a client portal that always shows where your matter stands.",
 };
 
 const stats = [
   { label: "Private client practice areas", value: `${practiceAreas.length}` },
   { label: "Based in", value: "London" },
   { label: "Client portal access", value: "24/7" },
-  { label: "Status", value: "Sample site" },
 ];
 
 const values = [
@@ -52,14 +51,13 @@ export default function AboutPage() {
         </div>
         <div className="relative mx-auto max-w-4xl px-6 py-28">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent-2">
-            Fictional firm — London
+            London
           </p>
           <h1 className="mt-4 font-display text-5xl text-[#f5f2ea] sm:text-6xl">
             About LDN Legal Associates
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-[#f5f2ea]/70">
-            LDN Legal Associates is a fictional London private client firm, created for
-            this sample website. It is presented as a practice built on a
+            LDN Legal Associates is a London private client firm built on a
             simple idea: families planning ahead, or dealing with a loss,
             deserve clear advice and should always know where their matter
             stands, backed by a portal that keeps them informed without
@@ -122,9 +120,6 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
-          <p className="mt-10 text-xs text-background/50">
-            Illustrative testimonials for a fictional firm. They are not from real clients.
-          </p>
         </div>
       </section>
     </div>

@@ -1,6 +1,6 @@
 ﻿export const metadata = {
   title: "Privacy Policy",
-  description: "How this sample website for LDN Legal Associates, a fictional firm, handles information submitted through the public site and client portal.",
+  description: "How LDN Legal Associates handles information submitted through the public site and client portal.",
 };
 
 export default function PrivacyPage() {

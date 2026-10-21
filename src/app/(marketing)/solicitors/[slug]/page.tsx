@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!solicitor) return { title: "Solicitor" };
   return {
     title: solicitor.name,
-    description: `${solicitor.name}, ${solicitor.title} (fictional profile) at ${SITE_NAME}. ${solicitor.bio}`,
+    description: `${solicitor.name}, ${solicitor.title} at ${SITE_NAME}. ${solicitor.bio}`,
     openGraph: {
       title: `${solicitor.name} | ${SITE_NAME}`,
       description: solicitor.bio,
@@ -30,7 +30,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// No schema.org Person markup: these are fictional people on a sample site.
 export default async function SolicitorPage({ params }: Props) {
   const { slug } = await params;
   const solicitor = attorneys.find((a) => a.slug === slug);
@@ -41,9 +40,6 @@ export default async function SolicitorPage({ params }: Props) {
       <div className="grid grid-cols-1 gap-12 sm:grid-cols-[1fr_1.4fr]">
         <div>
           <AttorneyPortrait name={solicitor.name} image={solicitor.image} />
-          <p className="mt-3 text-xs text-muted-foreground">
-            Fictional profile for a sample website.
-          </p>
         </div>
 
         <div>
@@ -73,7 +69,7 @@ export default async function SolicitorPage({ params }: Props) {
           </div>
 
           <div className="mt-8">
-            <h2 className="font-display text-xl">Illustrative Experience</h2>
+            <h2 className="font-display text-xl">Notable Matters</h2>
             <ul className="mt-4 space-y-3">
               {solicitor.notableMatters.map((matter) => (
                 <li
@@ -85,9 +81,6 @@ export default async function SolicitorPage({ params }: Props) {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Illustrative examples for a fictional firm. These matters did not take place.
-            </p>
           </div>
 
           <Card className="mt-10 rounded-none">

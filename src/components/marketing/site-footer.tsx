@@ -9,7 +9,7 @@ import { SITE_DEMO_NOTICE, SITE_NAME } from "@/lib/site-config";
 const firmLinks = [
   { href: "/about", label: "About the Firm" },
   { href: "/solicitors", label: "Our Solicitors" },
-  { href: "/case-results", label: "Illustrative Outcomes" },
+  { href: "/case-results", label: "Case Outcomes" },
   { href: "/faq", label: "FAQ" },
   { href: "/locations", label: "Location" },
   { href: "/contact", label: "Make an Enquiry" },
@@ -120,7 +120,7 @@ export function SiteFooter() {
             ))}
           </div>
           <p className="mt-6">
-            &copy; {new Date().getFullYear()} {SITE_NAME} (fictional sample firm).
+            &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
         </div>
       </div>
