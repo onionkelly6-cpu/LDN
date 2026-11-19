@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 const NEW_CLIENT = "new";
+const MAX_TOTAL_FILE_BYTES = 4 * 1024 * 1024;
 
 const inputClass = "mt-2 w-full rounded-sm border border-border bg-background px-4 py-2.5";
 
@@ -30,6 +31,17 @@ export function OpenMatterForm({ clients, practiceAreas }: Props) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    // Everything goes up in one request here, and Vercel rejects bodies
+    // over 4.5 MB — so cap the total, matching the server's check.
+    const totalBytes = formData
+      .getAll("files")
+      .reduce((sum, entry) => sum + (entry instanceof File ? entry.size : 0), 0);
+    if (totalBytes > MAX_TOTAL_FILE_BYTES) {
+      setStatus("error");
+      setMessage("Attached files together exceed 4 MB. Attach fewer here and add the rest from the case's Documents tab.");
+      return;
+    }
 
     setStatus("submitting");
     setMessage(null);
@@ -164,7 +176,8 @@ export function OpenMatterForm({ clients, practiceAreas }: Props) {
             className="mt-2 w-full text-sm text-muted-foreground file:mr-3 file:rounded-sm file:border file:border-border file:bg-card file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:border-primary"
           />
           <p className="mt-1 text-xs text-muted-foreground">
-            PDF or Word, up to 10 MB each, 5 at a time.
+            PDF or Word, up to 5 files and 4 MB in total. Add more later from
+            the case&apos;s Documents tab.
           </p>
         </div>
 

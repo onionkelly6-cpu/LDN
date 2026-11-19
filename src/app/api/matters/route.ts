@@ -8,13 +8,12 @@ import {
   type DemoClient,
 } from "@/lib/demo-clients";
 import { createMatter } from "@/lib/demo-matters";
-import { addDocument } from "@/lib/demo-documents";
 import { practiceAreas } from "@/lib/content/practice-areas";
 import { generateCaseNumber } from "@/lib/case-numbers";
 import {
   getUploadedFiles,
   parseVisibility,
-  sanitizeFilename,
+  storeUploadedDocuments,
   validateUploads,
 } from "@/lib/document-uploads";
 
@@ -126,19 +125,14 @@ export async function POST(request: NextRequest) {
     attorney: parsed.data.assignment === "me" ? attorneyName : null,
   });
 
-  const visibility = parseVisibility(formData.get("visibility"));
-  const documents = await Promise.all(
-    files.map((file) =>
-      addDocument({
-        matterId: matter.id,
-        filename: sanitizeFilename(file.name),
-        mimeType: file.type,
-        visibility,
-        sizeBytes: file.size,
-        uploadedBy: attorneyName,
-      })
-    )
-  );
+  const documents = await storeUploadedDocuments({
+    matterId: matter.id,
+    files,
+    visibility: parseVisibility(formData.get("visibility")),
+    uploadedBy: attorneyName,
+  });
 
-  return NextResponse.json({ matter, documents }, { status: 201 });
+  // Storage pathnames stay server-side; see /api/matters/[id]/documents.
+  const publicDocuments = documents.map(({ blobPathname: _blobPathname, ...doc }) => doc);
+  return NextResponse.json({ matter, documents: publicDocuments }, { status: 201 });
 }

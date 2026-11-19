@@ -3,15 +3,13 @@ import { bumpMatterVersion } from "@/lib/demo-matters";
 
 /**
  * DEMO-ONLY document metadata, backed by Upstash Redis instead of an
- * in-memory array. The four seed documents still reference real files
- * committed under `data/demo-documents/` (read-only static assets are
- * fine to ship inside the deployed bundle, even on Vercel) — but anything
- * uploaded through the app (`addDocument`) is a placeholder: no file
- * bytes are written anywhere. Vercel's serverless functions have no
- * writable disk outside `/tmp`, so persisting a real uploaded file isn't
- * an option without real object storage (`src/lib/storage`, Milestone 6).
- * The upload/download flow still works end to end, it just serves
- * generated placeholder content for anything that wasn't seeded.
+ * in-memory array. The four seed documents reference real files committed
+ * under `data/demo-documents/` (read-only static assets are fine to ship
+ * inside the deployed bundle, even on Vercel). Uploaded files go to a
+ * private Vercel Blob store (`src/lib/storage/blob.ts`) and are recorded
+ * here with their `blobPathname`; if no store is connected yet, an upload
+ * is metadata only (`isPlaceholder`) and downloads serve generated
+ * placeholder content, since serverless functions have no writable disk.
  */
 export type DemoDocumentVisibility = "internal" | "client";
 
@@ -24,7 +22,9 @@ export const ALLOWED_UPLOAD_MIME_TYPES: Record<string, string> = {
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
 };
 
-export const MAX_UPLOAD_SIZE_BYTES = 10 * 1024 * 1024; // 10 MB
+// Vercel Functions reject request bodies over 4.5 MB before they reach the
+// route, so uploads are capped just under that — per file *and* per request.
+export const MAX_UPLOAD_SIZE_BYTES = 4 * 1024 * 1024; // 4 MB
 
 export interface DemoDocument {
   id: string;
@@ -38,9 +38,13 @@ export interface DemoDocument {
   sizeLabel: string;
   uploadedBy: string;
   uploadedAt: string;
-  // true for anything uploaded through the app — no real file was ever
-  // written, downloads serve generated placeholder content instead.
+  // true for anything uploaded while no file storage was connected — no
+  // real file was ever written, downloads serve generated placeholder
+  // content instead.
   isPlaceholder: boolean;
+  // Set when the real file bytes live in the private Vercel Blob store
+  // (`src/lib/storage/blob.ts`); the download route streams from here.
+  blobPathname?: string;
 }
 
 const DOCUMENT_KEY = (id: string) => `document:${id}`;
@@ -140,11 +144,11 @@ function formatSizeLabel(bytes: number): string {
 }
 
 /**
- * Records a newly "uploaded" document. No file bytes are stored anywhere
- * — see the module comment above — just the metadata needed to render it
- * in the document list and generate a placeholder on download. Also
- * bumps the matter's version counter so `LiveMatterUpdates` polling
- * picks up the change (see `bumpMatterVersion` in demo-matters.ts).
+ * Records a newly uploaded document. With `blobPathname` the real file is
+ * already in private Blob storage; without it (no store connected) this is
+ * metadata only and downloads serve a generated placeholder. Also bumps
+ * the matter's version counter so `LiveMatterUpdates` polling picks up the
+ * change on the other side (see `bumpMatterVersion` in demo-matters.ts).
  */
 export async function addDocument(params: {
   matterId: string;
@@ -153,6 +157,7 @@ export async function addDocument(params: {
   visibility: DemoDocumentVisibility;
   sizeBytes: number;
   uploadedBy: string;
+  blobPathname?: string;
 }): Promise<DemoDocument> {
   const doc: DemoDocument = {
     id: `doc-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -168,7 +173,8 @@ export async function addDocument(params: {
       day: "numeric",
       year: "numeric",
     }),
-    isPlaceholder: true,
+    isPlaceholder: !params.blobPathname,
+    ...(params.blobPathname ? { blobPathname: params.blobPathname } : {}),
   };
 
   await redis.set(DOCUMENT_KEY(doc.id), doc);

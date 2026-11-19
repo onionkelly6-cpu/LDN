@@ -1,11 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
-import { addDocument } from "@/lib/demo-documents";
 import { getMatterById } from "@/lib/demo-matters";
+import { getClientByEmail } from "@/lib/demo-clients";
 import {
   getUploadedFiles,
   parseVisibility,
-  sanitizeFilename,
+  storeUploadedDocuments,
   validateUploads,
 } from "@/lib/document-uploads";
 
@@ -26,9 +26,15 @@ export async function POST(request: NextRequest, { params }: Props) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  // Sharing a resource on a matter is the assigned attorney's action only —
-  // not staff/admin, and not a client uploading to their own case.
-  if (session.user.role !== "attorney" || matter.attorney !== session.user.name) {
+  // Same two parties as the message thread: the assigned attorney, or the
+  // client who owns this matter. Staff/admin have no access to case data.
+  const role = session.user.role;
+  const isAssignedAttorney = role === "attorney" && matter.attorney === session.user.name;
+  const owningClient =
+    role === "client" && session.user.email ? await getClientByEmail(session.user.email) : undefined;
+  const isOwningClient = owningClient?.id === matter.clientId;
+
+  if (!isAssignedAttorney && !isOwningClient) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
@@ -44,23 +50,20 @@ export async function POST(request: NextRequest, { params }: Props) {
     return NextResponse.json({ error: uploadError }, { status: 400 });
   }
 
-  const visibility = parseVisibility(formData.get("visibility"));
+  // A client's upload is always shared with their attorney — "internal"
+  // would hide it from the client themselves, and only the attorney gets
+  // to decide what stays firm-internal.
+  const visibility = isAssignedAttorney ? parseVisibility(formData.get("visibility")) : "client";
 
-  // No file bytes are stored anywhere — see the module comment in
-  // demo-documents/data.ts. Downloads of these documents will serve
-  // generated placeholder content instead of the real upload.
-  const documents = await Promise.all(
-    files.map((file) =>
-      addDocument({
-        matterId,
-        filename: sanitizeFilename(file.name),
-        mimeType: file.type,
-        visibility,
-        sizeBytes: file.size,
-        uploadedBy: session.user.name ?? "Unknown",
-      })
-    )
-  );
+  const documents = await storeUploadedDocuments({
+    matterId,
+    files,
+    visibility,
+    uploadedBy: session.user.name ?? (isAssignedAttorney ? "Unknown" : "Client"),
+  });
 
-  return NextResponse.json({ documents }, { status: 201 });
+  // The storage pathname stays server-side; the browser only ever needs
+  // the document id (downloads go through /api/documents/[id]/download).
+  const publicDocuments = documents.map(({ blobPathname: _blobPathname, ...doc }) => doc);
+  return NextResponse.json({ documents: publicDocuments }, { status: 201 });
 }

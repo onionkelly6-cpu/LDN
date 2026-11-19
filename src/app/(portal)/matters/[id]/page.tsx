@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { Tabs } from "@/components/ui/tabs";
 import { CaseTimeline } from "@/components/portal/case-timeline";
 import { DocumentList } from "@/components/portal/document-list";
+import { DocumentUploadForm } from "@/components/portal/document-upload-form";
+import { isFileStorageConfigured } from "@/lib/storage/blob";
 import { LiveMatterUpdates } from "@/components/portal/live-matter-updates";
 import { MessageThread } from "@/components/portal/message-thread";
 import { MessageComposer } from "@/components/portal/message-composer";
@@ -47,8 +49,9 @@ export default async function MatterDetailPage({ params }: Props) {
         </Card>
       </Reveal>
       <p className="mt-4 text-muted-foreground">
-        Status changes and shared documents appear here as soon as your
-        attorney updates them, no need to refresh.
+        Status changes, documents and messages appear here as soon as your
+        solicitor updates them, no need to refresh. Upload documents for
+        your solicitor from the Documents tab.
       </p>
 
       <div className="mt-10">
@@ -67,10 +70,19 @@ export default async function MatterDetailPage({ params }: Props) {
               id: "documents",
               label: "Documents",
               content: (
-                <DocumentList
-                  documents={documents}
-                  getDownloadHref={(doc) => getSignedDownloadHref(doc.id)}
-                />
+                <div className="space-y-6">
+                  <DocumentUploadForm matterId={id} canChooseVisibility={false} />
+                  <DocumentList
+                    documents={documents}
+                    getDownloadHref={(doc) => getSignedDownloadHref(doc.id)}
+                  />
+                  {!isFileStorageConfigured() && (
+                    <p className="text-xs text-muted-foreground">
+                      File storage isn&apos;t connected yet: uploads are listed
+                      here, but downloads serve placeholder content until it is.
+                    </p>
+                  )}
+                </div>
               ),
             },
             {

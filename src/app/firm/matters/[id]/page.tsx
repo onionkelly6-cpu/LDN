@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import { auth } from "@/lib/auth";
 import { getDocumentsForMatter, getSignedDownloadHref } from "@/lib/demo-documents";
+import { isFileStorageConfigured } from "@/lib/storage/blob";
 import { getMatterById, MATTER_STAGES } from "@/lib/demo-matters";
 import { getMessagesForMatter } from "@/lib/demo-messages";
 import { getClientById } from "@/lib/demo-clients";
@@ -86,13 +87,13 @@ export default async function FirmMatterDetailPage({ params }: Props) {
                     documents={documents}
                     getDownloadHref={(doc) => getSignedDownloadHref(doc.id)}
                   />
-                  <p className="text-xs text-muted-foreground">
-                    Documents metadata is stored now. Uploads don&apos;t persist
-                    real file bytes yet, downloads serve placeholder content
-                    for anything not seeded, but they still go through the
-                    same short-lived signed URLs production will use against
-                    real object storage (Milestone 6).
-                  </p>
+                  {!isFileStorageConfigured() && (
+                    <p className="text-xs text-muted-foreground">
+                      File storage isn&apos;t connected yet: uploads are listed
+                      here, but downloads serve placeholder content until a
+                      Vercel Blob store is connected to this project.
+                    </p>
+                  )}
                 </div>
               ),
             },

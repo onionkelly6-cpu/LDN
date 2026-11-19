@@ -134,17 +134,28 @@ appears in **Open a Case** on `/firm/matters` for an attorney to assign
 a case to. Converting a lead creates the record first; granting that
 client portal access later links to it by the same email.
 
-## Documents: metadata is real, files are not
+## Documents: shared both ways, stored in private Vercel Blob
 
-Uploading a document through the firm workspace really does save its
-name, size, uploader, and who can see it (internal-only vs. shared
-with the client). But no actual file bytes are stored anywhere —
-Vercel's serverless functions don't have persistent disk to write to.
-Downloading an uploaded (non-seeded) document serves generated
-placeholder text instead of the real file. The whole upload → signed
-download link → download flow works end-to-end; it's only the "real
-bytes on real storage" part that's still pending (that's what the S3
-client already in `package.json` is for, once wired up).
+Both sides of a matter can upload PDF/Word documents from its Documents
+tab, up to 4 MB each (Vercel rejects request bodies over 4.5 MB):
+
+- **The assigned attorney** chooses *internal only* or *client-visible*.
+- **The client** uploads straight to their solicitor; their files are
+  always visible to both of them, never to anyone else.
+
+The file itself goes into a **private** Vercel Blob store
+(`src/lib/storage/blob.ts`); the document record in Redis keeps its name,
+size, uploader, visibility and `blobPathname`. Private blobs have no
+public URL — a download goes through a short-lived signed link to
+`/api/documents/[id]/download`, which checks the session and that the
+person is the assigned attorney or the owning client, then streams the
+file from Blob.
+
+Connecting a Blob store to the Vercel project (Storage → Create → Blob,
+then connect it to the project) sets `BLOB_READ_WRITE_TOKEN`. Until one is
+connected, uploads still work but only their metadata is saved, and
+downloads serve placeholder text — the pages say so while that's the case.
+Documents uploaded before the store was connected stay placeholders.
 
 ## "Live" updates without a persistent connection
 

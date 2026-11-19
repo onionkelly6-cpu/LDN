@@ -5,6 +5,7 @@ import { auth } from "@/lib/auth";
 import { getDocumentById, verifyDocumentToken } from "@/lib/demo-documents";
 import { getMatterById } from "@/lib/demo-matters";
 import { getClientByEmail } from "@/lib/demo-clients";
+import { readDocumentFile } from "@/lib/storage/blob";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -48,6 +49,25 @@ export async function GET(request: NextRequest, { params }: Props) {
 
   if (!isAssignedAttorney && !isOwningClient) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
+  if (doc.blobPathname) {
+    // Real upload in the private Blob store — streamed through this route
+    // (after the checks above) because private blobs have no public URL.
+    const file = await readDocumentFile(doc.blobPathname);
+    if (!file) {
+      return NextResponse.json({ error: "File not found in storage" }, { status: 404 });
+    }
+
+    return new NextResponse(file.stream, {
+      headers: {
+        "Content-Type": doc.mimeType,
+        "Content-Disposition": `attachment; filename="${doc.filename}"`,
+        "Content-Length": String(file.size),
+        "Cache-Control": "private, no-store",
+        "X-Content-Type-Options": "nosniff",
+      },
+    });
   }
 
   if (doc.isPlaceholder) {

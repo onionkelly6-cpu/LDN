@@ -1,8 +1,11 @@
 import {
+  addDocument,
   ALLOWED_UPLOAD_MIME_TYPES,
   MAX_UPLOAD_SIZE_BYTES,
+  type DemoDocument,
   type DemoDocumentVisibility,
 } from "@/lib/demo-documents";
+import { isFileStorageConfigured, saveDocumentFile } from "@/lib/storage/blob";
 
 /**
  * Upload rules shared by every route that accepts files — the per-matter
@@ -32,11 +35,50 @@ export function validateUploads(files: File[]): string | null {
       return `"${file.name}": only PDF and Word documents (.pdf, .doc, .docx) are accepted`;
     }
     if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-      return `"${file.name}" exceeds the 10 MB upload limit`;
+      return `"${file.name}" exceeds the 4 MB upload limit`;
     }
   }
 
+  const totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+  if (totalBytes > MAX_UPLOAD_SIZE_BYTES) {
+    return "Files together exceed 4 MB — upload them one at a time instead";
+  }
+
   return null;
+}
+
+/**
+ * Saves each file to private Blob storage when it's connected and records
+ * its metadata; without storage, records metadata-only placeholders (the
+ * pre-storage behavior). Shared by attorney/client uploads on a matter and
+ * by opening a new case with files attached.
+ */
+export async function storeUploadedDocuments(params: {
+  matterId: string;
+  files: File[];
+  visibility: DemoDocumentVisibility;
+  uploadedBy: string;
+}): Promise<DemoDocument[]> {
+  const useBlob = isFileStorageConfigured();
+
+  return Promise.all(
+    params.files.map(async (file) => {
+      const filename = sanitizeFilename(file.name);
+      const blobPathname = useBlob
+        ? await saveDocumentFile({ matterId: params.matterId, filename, file })
+        : undefined;
+
+      return addDocument({
+        matterId: params.matterId,
+        filename,
+        mimeType: file.type,
+        visibility: params.visibility,
+        sizeBytes: file.size,
+        uploadedBy: params.uploadedBy,
+        blobPathname,
+      });
+    })
+  );
 }
 
 /** Non-empty `File` entries for `field` — an untouched file input posts one empty File. */
