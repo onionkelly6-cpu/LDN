@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { redis } from "@/lib/redis";
+import { createClient } from "@/lib/demo-clients";
 
 /**
  * Client accounts, backed by Upstash Redis instead of a local file or an
@@ -68,7 +69,25 @@ export async function createClientAccount(params: {
   await redis.set(EMAIL_KEY(account.email), account.id);
   await redis.sadd(INDEX_KEY, account.id);
 
+  // A login alone doesn't make someone selectable as a client — matters
+  // point at a `DemoClient` record. Create (or reuse, by email) that record
+  // so a client who signs up shows up in "Open a Case" on `/firm/matters`.
+  await createClient({ name: account.name, email: account.email });
+
   return account;
+}
+
+/**
+ * Backfills a client record for every login created before
+ * `createClientAccount` started creating one, so clients who signed up
+ * earlier also appear in "Open a Case". `createClient` reuses an existing
+ * record by email, so this only writes for accounts that have none.
+ */
+export async function ensureClientRecordsForAccounts(): Promise<void> {
+  const accounts = await listClientAccounts();
+  await Promise.all(
+    accounts.map((account) => createClient({ name: account.name, email: account.email }))
+  );
 }
 
 export async function deleteClientAccount(id: string): Promise<void> {

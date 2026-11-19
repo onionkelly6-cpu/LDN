@@ -6,6 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 import { auth } from "@/lib/auth";
 import { MATTER_STAGES, getMattersForAttorney, getUnassignedMatters } from "@/lib/demo-matters";
 import { getClientById, listClients } from "@/lib/demo-clients";
+import { ensureClientRecordsForAccounts } from "@/lib/client-accounts";
 import { practiceAreas } from "@/lib/content/practice-areas";
 
 export const metadata = { title: "Matters | Firm Workspace" };
@@ -14,6 +15,7 @@ export default async function FirmMattersPage() {
   const session = await auth();
   const matters = await getMattersForAttorney(session?.user?.name ?? "");
   const unassigned = await getUnassignedMatters();
+  await ensureClientRecordsForAccounts();
   const clients = await listClients();
   const practiceAreaOptions = practiceAreas.map((area) => ({ slug: area.slug, name: area.name }));
 

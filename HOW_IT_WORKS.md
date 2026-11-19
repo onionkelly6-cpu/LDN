@@ -125,12 +125,14 @@ written to be easy to swap out later — the rest of the app just calls
 functions like `getMatterById()` or `createLead()` without caring what's
 underneath.
 
-**One deliberate gap:** a client/attorney *login* (in
-`client-accounts.ts`) and a client/attorney *record* (in
-`demo-clients.ts`) are two separate things. Creating a login for
-someone only shows them their matters if the email matches an existing
-client record. This is what makes "convert a lead into a client + case
-first, then grant portal access" a natural two-step flow (see below).
+**Logins vs. records:** a client *login* (in `client-accounts.ts`) and a
+client *record* (in `demo-clients.ts`) are two separate things, linked
+by email. Matters point at the record. Creating a login — by public
+signup or from `/firm/clients` — also creates the matching record (or
+reuses one with the same email), so a client who signs up immediately
+appears in **Open a Case** on `/firm/matters` for an attorney to assign
+a case to. Converting a lead creates the record first; granting that
+client portal access later links to it by the same email.
 
 ## Documents: metadata is real, files are not
 
