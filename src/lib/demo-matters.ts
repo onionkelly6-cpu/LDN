@@ -123,17 +123,18 @@ export async function getMatterById(id: string): Promise<DemoMatter | undefined>
 }
 
 /**
- * Opens a new matter — used by Lead → Convert to Matter (`/firm/leads`).
- * Always starts at the first case stage, assigned directly to the
- * converting attorney rather than dropped into the unclaimed pool, since
- * they're the one who reviewed the lead and chose to take the case.
+ * Opens a new matter. Always starts at the first case stage. Lead →
+ * Convert to Matter (`/firm/leads`) assigns it straight to the converting
+ * attorney; an attorney opening a case from `/firm/matters` can instead
+ * pass `attorney: null` to post it to the unclaimed pool, where any
+ * attorney can pick it up with "Assign to Me".
  */
 export async function createMatter(params: {
   caseNumber: string;
   title: string;
   practiceArea: string;
   clientId: string;
-  attorney: string;
+  attorney: string | null;
 }): Promise<DemoMatter> {
   await ensureSeeded();
 
@@ -202,6 +203,22 @@ export async function unassignMattersForAttorney(attorneyName: string): Promise<
       await bumpMatterVersion(matter.id);
     })
   );
+}
+
+/**
+ * The assigned attorney hands a matter back to the unclaimed pool, so
+ * another attorney can pick that client up with "Assign to Me" — the other
+ * half of the self-assignment cycle. Documents and messages stay on the
+ * matter, so whoever claims it next inherits the full file.
+ */
+export async function releaseMatter(id: string): Promise<DemoMatter | undefined> {
+  const matter = await getMatterById(id);
+  if (!matter) return undefined;
+
+  const released: DemoMatter = { ...matter, attorney: null };
+  await redis.set(MATTER_KEY(id), released);
+  await bumpMatterVersion(id);
+  return released;
 }
 
 export async function updateMatterStatus(

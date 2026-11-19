@@ -5,6 +5,7 @@ import { CaseTimeline } from "@/components/portal/case-timeline";
 import { DocumentList } from "@/components/portal/document-list";
 import { DocumentUploadForm } from "@/components/portal/document-upload-form";
 import { MatterStatusControl } from "@/components/portal/matter-status-control";
+import { ReleaseMatterButton } from "@/components/portal/release-matter-button";
 import { LiveMatterUpdates } from "@/components/portal/live-matter-updates";
 import { MessageThread } from "@/components/portal/message-thread";
 import { MessageComposer } from "@/components/portal/message-composer";
@@ -54,6 +55,7 @@ export default async function FirmMatterDetailPage({ params }: Props) {
           <div className="flex flex-col items-end gap-3">
             <LiveMatterUpdates matterId={id} />
             <MatterStatusControl matterId={id} currentStatus={matter.status} />
+            <ReleaseMatterButton matterId={id} />
           </div>
         </Card>
       </Reveal>

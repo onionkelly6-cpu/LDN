@@ -1,20 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { auth } from "@/lib/auth";
-import {
-  addDocument,
-  ALLOWED_UPLOAD_MIME_TYPES,
-  MAX_UPLOAD_SIZE_BYTES,
-} from "@/lib/demo-documents";
+import { addDocument } from "@/lib/demo-documents";
 import { getMatterById } from "@/lib/demo-matters";
+import {
+  getUploadedFiles,
+  parseVisibility,
+  sanitizeFilename,
+  validateUploads,
+} from "@/lib/document-uploads";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
-
-function sanitizeFilename(name: string): string {
-  const trimmed = name.trim().slice(0, 150);
-  return trimmed.replace(/[^\w.\- ()&]/g, "_") || "document";
-}
 
 export async function POST(request: NextRequest, { params }: Props) {
   const { id: matterId } = await params;
@@ -36,40 +33,34 @@ export async function POST(request: NextRequest, { params }: Props) {
   }
 
   const formData = await request.formData();
-  const file = formData.get("file");
-  const visibilityRaw = formData.get("visibility");
+  const files = getUploadedFiles(formData, "file");
 
-  if (!(file instanceof File)) {
+  if (files.length === 0) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
   }
 
-  if (!ALLOWED_UPLOAD_MIME_TYPES[file.type]) {
-    return NextResponse.json(
-      { error: "Only PDF and Word documents (.pdf, .doc, .docx) are accepted" },
-      { status: 400 }
-    );
+  const uploadError = validateUploads(files);
+  if (uploadError) {
+    return NextResponse.json({ error: uploadError }, { status: 400 });
   }
 
-  if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-    return NextResponse.json(
-      { error: "File exceeds the 10 MB upload limit" },
-      { status: 400 }
-    );
-  }
-
-  const visibility = visibilityRaw === "client" ? "client" : "internal";
+  const visibility = parseVisibility(formData.get("visibility"));
 
   // No file bytes are stored anywhere — see the module comment in
-  // demo-documents/data.ts. Downloads of this document will serve
+  // demo-documents/data.ts. Downloads of these documents will serve
   // generated placeholder content instead of the real upload.
-  const document = await addDocument({
-    matterId,
-    filename: sanitizeFilename(file.name),
-    mimeType: file.type,
-    visibility,
-    sizeBytes: file.size,
-    uploadedBy: session.user.name ?? "Unknown",
-  });
+  const documents = await Promise.all(
+    files.map((file) =>
+      addDocument({
+        matterId,
+        filename: sanitizeFilename(file.name),
+        mimeType: file.type,
+        visibility,
+        sizeBytes: file.size,
+        uploadedBy: session.user.name ?? "Unknown",
+      })
+    )
+  );
 
-  return NextResponse.json({ document }, { status: 201 });
+  return NextResponse.json({ documents }, { status: 201 });
 }

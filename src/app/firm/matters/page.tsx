@@ -1,10 +1,12 @@
 import { DocketBoard, type DocketRow } from "@/components/portal/docket-board";
 import { AssignClientCard } from "@/components/portal/assign-client-card";
+import { OpenMatterForm } from "@/components/portal/open-matter-form";
 import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import { auth } from "@/lib/auth";
 import { MATTER_STAGES, getMattersForAttorney, getUnassignedMatters } from "@/lib/demo-matters";
-import { getClientById } from "@/lib/demo-clients";
+import { getClientById, listClients } from "@/lib/demo-clients";
+import { practiceAreas } from "@/lib/content/practice-areas";
 
 export const metadata = { title: "Matters | Firm Workspace" };
 
@@ -12,6 +14,8 @@ export default async function FirmMattersPage() {
   const session = await auth();
   const matters = await getMattersForAttorney(session?.user?.name ?? "");
   const unassigned = await getUnassignedMatters();
+  const clients = await listClients();
+  const practiceAreaOptions = practiceAreas.map((area) => ({ slug: area.slug, name: area.name }));
 
   const rows: DocketRow[] = await Promise.all(
     matters.map(async (matter) => ({
@@ -68,12 +72,19 @@ export default async function FirmMattersPage() {
         />
       </div>
 
+      <div className="mt-10">
+        <Reveal>
+          <OpenMatterForm clients={clients} practiceAreas={practiceAreaOptions} />
+        </Reveal>
+      </div>
+
       {unassigned.length > 0 && (
         <div className="mt-14">
           <h2 className="font-display text-xl">Available Clients</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            Not yet assigned to a solicitor. Claim one to add it to your
-            docket.
+            Not yet assigned to a solicitor, either posted here when the
+            case was opened or released by the solicitor who had it. Claim
+            one to add it to your docket, documents and messages included.
           </p>
           <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {unassignedWithClientName.map(({ matter, clientName }, i) => (

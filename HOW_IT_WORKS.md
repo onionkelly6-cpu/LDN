@@ -183,6 +183,26 @@ This ties several pieces together:
    documents, updates status, and messages the client — all visible
    live on the client's dashboard.
 
+## Opening a case directly, and passing it between attorneys
+
+Not every case starts as a lead. From **`/firm/matters`**, an attorney
+can use **Open a Case** to:
+
+1. Pick an existing client, or enter a new client's name and email.
+2. Give the case a title and practice area (the case number is generated
+   the same way as for converted leads, see `src/lib/case-numbers.ts`).
+3. Attach up to 5 PDF/Word documents, marked client-visible or internal.
+4. Choose who handles it: **Assign to me** puts it on their own docket;
+   **Post to Available Clients** leaves it unassigned so another attorney
+   can select that client with **Assign to Me**.
+
+From a matter's detail page, the assigned attorney can **Release to
+Available Clients**, which puts the case back into that pool, documents
+and messages included, for another attorney to pick up. That's the full
+cycle: open → assign (to self or pool) → claim → work the case → release
+→ claim again. See `POST /api/matters`, `POST /api/matters/[id]/release`
+and `POST /api/matters/[id]/assign`.
+
 ## Known limitations (by design, for now)
 
 - No real database — everything demo-data / Redis-backed, as above.

@@ -35,10 +35,23 @@ async function ensureSeeded(): Promise<void> {
   await redis.sadd(INDEX_KEY, seedClients[0].id, ...seedClients.slice(1).map((c) => c.id));
 }
 
+export async function listClients(): Promise<DemoClient[]> {
+  await ensureSeeded();
+  const ids = await redis.smembers(INDEX_KEY);
+  if (ids.length === 0) return [];
+  const clients = await Promise.all(ids.map((id) => redis.get<DemoClient>(CLIENT_KEY(id))));
+  return clients
+    .filter((client): client is DemoClient => client !== null)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 export async function getClientById(id: string): Promise<DemoClient | undefined> {
   await ensureSeeded();
   const client = await redis.get<DemoClient>(CLIENT_KEY(id));
-  return client ?? undefined;
+  // `client:email:<email>` shares this key prefix and holds a bare id
+  // string — only accept an actual client record, so a crafted id can't
+  // resolve to one of those.
+  return client && typeof client === "object" && client.id ? client : undefined;
 }
 
 export async function getClientByEmail(email: string): Promise<DemoClient | undefined> {

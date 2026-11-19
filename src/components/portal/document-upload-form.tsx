@@ -16,9 +16,9 @@ export function DocumentUploadForm({ matterId }: { matterId: string }) {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    if (!(formData.get("file") as File)?.name) {
+    if (!formData.getAll("file").some((entry) => entry instanceof File && entry.name)) {
       setStatus("error");
-      setError("Choose a file to upload.");
+      setError("Choose at least one file to upload.");
       return;
     }
 
@@ -53,16 +53,17 @@ export function DocumentUploadForm({ matterId }: { matterId: string }) {
     >
       <div className="flex-1">
         <label htmlFor="file" className="block text-sm font-medium">
-          Upload a document
+          Upload documents
         </label>
         <input
           id="file"
           name="file"
           type="file"
+          multiple
           accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           className="mt-2 w-full text-sm text-muted-foreground file:mr-3 file:rounded-sm file:border file:border-border file:bg-card file:px-3 file:py-1.5 file:text-sm file:text-foreground hover:file:border-primary"
         />
-        <p className="mt-1 text-xs text-muted-foreground">PDF or Word documents, up to 10 MB.</p>
+        <p className="mt-1 text-xs text-muted-foreground">PDF or Word documents, up to 10 MB each, 5 at a time.</p>
       </div>
 
       <div>
